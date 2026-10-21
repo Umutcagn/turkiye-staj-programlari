@@ -26,4 +26,5 @@ jobs:
         if: steps.kontrol.outputs.sorunlu == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh issue create --title "Link kontrolü: açılmayan linkler" --body-file link_raporu.md --repo "$GITHUB_REPOSITORY"
+        run: |
+          gh issue create --title "Link kontrolü: açılmayan linkler" --body-file link_raporu.md --repo "$GITHUB_REPOSITORY"

@@ -7,7 +7,7 @@ body:
     attributes: {label: Kaydın linki, description: Listedeki "Başvur" linki}
     validations: {required: true}
   - type: textarea
-    attributes: {label: Ne yanlış, doğrusu ne?}
+    attributes: {label: "Ne yanlış, doğrusu ne?"}
     validations: {required: true}
   - type: input
     attributes: {label: Kaynak, description: Doğru bilginin geçtiği resmi sayfa}
