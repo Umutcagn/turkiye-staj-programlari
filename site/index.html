@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staj Takvimi</title>
+  <meta name="description" content="Türkiye'deki öğrenciler için staj, yeni mezun ve yurt dışı programlarının son başvuru takvimi. Resmi linkli, katkıya açık.">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="ust">
+    <div class="ust-ic">
+      <h1>Staj takvimi</h1>
+      <p class="aciklama">Türkiye'deki öğrenciler için staj, yeni mezun ve yurt dışı programları. Her kaydın resmi ilan linki var; bilinmeyen tarih ve şartlar uydurulmaz.</p>
+      <p class="ozet" id="ozet"></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="serit-alan" aria-labelledby="serit-baslik">
+      <div class="bolum-baslik">
+        <h2 id="serit-baslik">Önümüzdeki 12 ay</h2>
+        <p class="lejant">
+          <span><i class="nokta kesin"></i>Tarihi açıklandı</span>
+          <span><i class="nokta beklenen"></i>Geçen yılın tarihi</span>
+        </p>
+      </div>
+      <div class="serit" id="serit" role="list" aria-label="Son başvuru tarihleri zaman çizelgesi"></div>
+      <p class="serit-not" id="serit-not"></p>
+    </section>
+
+    <section class="liste-alan" aria-labelledby="liste-baslik">
+      <h2 id="liste-baslik" class="gorunmez">Programlar</h2>
+      <form class="filtre" id="filtre" role="search" onsubmit="return false">
+        <label class="ara">
+          <span class="gorunmez">Ara</span>
+          <input type="search" id="ara" placeholder="Şirket veya program ara" autocomplete="off">
+        </label>
+        <label>
+          <span class="etiket">Alan</span>
+          <select id="alan"><option value="">Tüm alanlar</option></select>
+        </label>
+        <label>
+          <span class="etiket">Tür</span>
+          <select id="tur"><option value="">Tüm türler</option></select>
+        </label>
+        <label>
+          <span class="etiket">Bölge</span>
+          <select id="bolge">
+            <option value="">Her yer</option>
+            <option value="TR">Türkiye</option>
+            <option value="yurt-disi">Yurt dışı</option>
+          </select>
+        </label>
+        <label class="kutu">
+          <input type="checkbox" id="kapali"> Kapananları göster
+        </label>
+      </form>
+      <p class="sonuc-sayisi" id="sonuc-sayisi" aria-live="polite"></p>
+      <ol class="liste" id="liste"></ol>
+    </section>
+  </main>
+
+  <footer class="alt">
+    <p>Bir program mı eksik? <a id="katki" href="#">Formu doldur</a>, onaylanınca listeye eklenir.</p>
+    <p><strong>Bu liste bilgi amaçlıdır ve gönüllüler tarafından tutulur.</strong> Hiçbir şirketle bağlantısı yoktur; başvuru almaz, aracılık yapmaz. Tarih ve şartlar değişebilir ya da hatalı olabilir; doğruluğu garanti edilmez ve doğabilecek sonuçlardan sorumluluk kabul edilmez. Esas olan şirketin resmi ilanıdır. Bu sayfa çerez, analitik ya da üçüncü taraf kaynak kullanmaz.</p>
+    <p class="kucuk" id="guncelleme"></p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-"""Komut satırı: validate | readme | contribution | links | rank."""
+"""Komut satırı: validate | readme | contribution | site | links | rank."""
 
 from __future__ import annotations
 
@@ -133,6 +133,27 @@ def komut_rank(args: argparse.Namespace) -> int:
     return 0
 
 
+def komut_site(args: argparse.Namespace) -> int:
+    import json
+
+    from src.site import derle, skorla
+
+    if args.ozel:
+        profil_yolu = PRIVATE_DIZIN / "profile.json"
+        if not profil_yolu.exists():
+            print(f"Profil yok: {profil_yolu}")
+            return 1
+        profil = json.loads(profil_yolu.read_text(encoding="utf-8"))
+        programlar = skorla(schema.yukle(PUBLIC) + schema.yukle(PRIVATE), profil, date.today())
+        hedef = PRIVATE_DIZIN / "site"
+    else:
+        programlar = schema.yukle(PUBLIC)
+        hedef = KOK / "_site"
+    sayfa = derle(KOK / "site", hedef, programlar, ozel=args.ozel)
+    print(f"{len(programlar)} program → {sayfa}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")  # Windows konsolunda Türkçe karakterler
@@ -145,6 +166,9 @@ def main(argv: list[str] | None = None) -> int:
     p = alt.add_parser("contribution", help="onaylanmış issue'yu programs.json'a işle (Action)")
     p.add_argument("olay", help="GITHUB_EVENT_PATH")
     p.set_defaults(f=komut_contribution)
+    p = alt.add_parser("site", help="dashboard'u derle (_site/ ya da --ozel ile data/private/site/)")
+    p.add_argument("--ozel", action="store_true", help="private kayıtlar + TOPSIS skorlarıyla yerel sürüm")
+    p.set_defaults(f=komut_site)
     p = alt.add_parser("links", help="public linkleri kontrol et")
     p.add_argument("--cikti", help="raporun yazılacağı dosya")
     p.set_defaults(f=komut_links)

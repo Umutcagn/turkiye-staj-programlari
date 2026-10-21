@@ -2,8 +2,10 @@
 
 Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dışı programlarının **tek yerde, son başvuru tarihine göre sıralı** listesi. Her kaydın resmi ilan linki vardır. Tarihi geçen programlar otomatik olarak "Kapanmış" bölümüne taşınır.
 
+**[📅 Takvim görünümü →](https://umutcagn.github.io/turkiye-staj-programlari/)** Alan, tür ve bölgeye göre filtrele; kalan günleri gör; son başvuru tarihini tek tıkla takvimine ekle.
+
 > [!IMPORTANT]
-> Bilgiler (tarih, not eşiği, şartlar) şirketten şirkete ve yıldan yıla değişir. **Başvurmadan önce her zaman resmi ilanı kontrol et.** Bilinmeyen şartlar uydurulmaz, "Belirtilmemiş" yazılır.
+> Bu liste **bilgi amaçlıdır** ve gönüllüler tarafından tutulur. Listelenen şirketlerin hiçbiriyle bağlantısı yoktur; başvuru almaz, aracılık yapmaz. Tarih ve şartlar değişebilir ya da hatalı olabilir; doğruluğu garanti edilmez ve doğabilecek sonuçlardan sorumluluk kabul edilmez. **Esas olan şirketin resmi ilanıdır; başvurmadan önce mutlaka kontrol et.** Bilinmeyen şartlar uydurulmaz, "Belirtilmemiş" yazılır.
 
 **Bir program mı eksik ya da yanlış?** [Program ekle](../../issues/new?template=yeni-program.yml) · [Düzeltme bildir](../../issues/new?template=duzenle.yml) · [Kapandı bildir](../../issues/new?template=kapandi.yml) — form doldurman yeterli, kod bilmene gerek yok.
 
