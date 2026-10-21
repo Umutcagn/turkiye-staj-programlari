@@ -40,12 +40,31 @@ def test_ozet_sayilari_tarih_durumuna_gore(kayit):
         kayit(id="3", bolge="yurt-disi", tarih_durumu="duyurulmadi", son_basvuru=None),
         kayit(id="4", son_basvuru="2026-01-01"),  # kapandı
     ]
-    assert "**4 program** · 2 açık · 1 beklenen" in liste_markdown(kayitlar, BUGUN)
+    assert "**4 program** · 2 açık · 0 yakında açılıyor · 1 beklenen" in liste_markdown(kayitlar, BUGUN)
 
 
-def test_yurt_disi_ayri_bolumde(kayit):
+def test_yurt_disi_durumuna_gore_bolumde_ve_isaretli(kayit):
     k = kayit(bolge="yurt-disi", tur="yurt-disi")
-    assert bolumler([k], BUGUN)["yurt_disi"] == [k]
+    assert bolumler([k], BUGUN)["acik"] == [k]
+    assert "🌍 **Örnek A.Ş.**" in liste_markdown([k], BUGUN)
+
+
+def test_henuz_acilmayan_yakinda_bolumunde(kayit):
+    gec = kayit(id="g", basvuru_acilis="2027-01-15", son_basvuru="2027-02-15")
+    erken = kayit(id="e", basvuru_acilis="2026-12-01", son_basvuru="2027-03-01")
+    acik = kayit(id="a", basvuru_acilis="2026-10-01", son_basvuru="2026-10-31")
+    b = bolumler([gec, erken, acik], BUGUN)
+    assert [k["id"] for k in b["yakinda"]] == ["e", "g"]
+    assert [k["id"] for k in b["acik"]] == ["a"]
+
+
+def test_pencere_ve_donem_metni(kayit):
+    md = liste_markdown([kayit(basvuru_acilis="2026-10-01", son_basvuru="2026-10-31",
+                               donem_baslangic="2027-03-01", donem_bitis="2027-07-31")], BUGUN)
+    assert "1 Ekim – 31 Ekim 2026" in md and "1 Mart – 31 Temmuz 2027" in md
+    beklenen = liste_markdown([kayit(tarih_durumu="beklenen", basvuru_acilis="2026-01-06",
+                                     son_basvuru="2026-03-31")], BUGUN)
+    assert "_Geçen yıl: 6 Ocak – 31 Mart 2026_" in beklenen
 
 
 def test_acik_programlar_tarihe_gore_sirali(kayit):

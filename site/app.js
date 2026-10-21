@@ -21,7 +21,7 @@
       else if (k.startsWith("on")) d.addEventListener(k.slice(2), v);
       else d.setAttribute(k, v === true ? "" : v);
     }
-    for (const c of cocuklar.flat()) if (c != null && c !== false) d.append(c);
+    for (const c of cocuklar.flat(Infinity)) if (c != null && c !== false) d.append(c);
     return d;
   }
   const tarihOku = (s) => { const [y, a, g] = s.split("-").map(Number); return new Date(y, a - 1, g); };
@@ -30,28 +30,35 @@
   const guvenliUrl = (u) => (/^https:\/\//.test(u || "") ? u : null);
 
   // ---- tarih durumu ------------------------------------------------------
+  // Beklenen kayıtlarda tüm tarihler (açılış, son gün, dönem) aynı yıl kadar ileri kaydırılır.
   function hazirla(k) {
-    let tarih = null;
+    let tarih = null, kaydir = 0;
     if (k.son_basvuru && (k.tarih_durumu === "kesin" || k.tarih_durumu === "beklenen")) {
       tarih = tarihOku(k.son_basvuru);
       if (k.tarih_durumu === "beklenen") {
-        while (tarih < bugun) tarih = new Date(tarih.getFullYear() + 1, tarih.getMonth(), tarih.getDate());
+        while (tarih < bugun) { tarih = new Date(tarih.getFullYear() + 1, tarih.getMonth(), tarih.getDate()); kaydir++; }
       }
     }
+    const tasi = (s) => { if (!s) return null; const d = tarihOku(s); return new Date(d.getFullYear() + kaydir, d.getMonth(), d.getDate()); };
+    const acilis = tasi(k.basvuru_acilis);
     const kapandi = k.aktif === false || (k.tarih_durumu === "kesin" && tarih < bugun);
     const gun = tarih ? Math.round((tarih - bugun) / GUN_MS) : null;
     let durum = "beklenen";
     if (kapandi) durum = "kapandi";
-    else if (k.tarih_durumu === "kesin" || k.tarih_durumu === "surekli") durum = "acik";
-    return { ...k, _tarih: tarih, _gun: gun, _durum: durum,
+    else if (k.tarih_durumu === "kesin") durum = acilis && acilis > bugun ? "yakinda" : "acik";
+    else if (k.tarih_durumu === "surekli") durum = "acik";
+    return { ...k, _tarih: tarih, _acilis: acilis, _donemBas: tasi(k.donem_baslangic), _donemBit: tasi(k.donem_bitis),
+             _gun: gun, _acilisGun: acilis ? Math.round((acilis - bugun) / GUN_MS) : null, _durum: durum,
              _acil: durum === "acik" && gun != null && gun <= ACIL_GUN };
   }
 
   const programlar = VERI.programlar.map(hazirla);
 
   function siraAnahtari(k) {
-    const grup = { acik: 0, beklenen: 1, kapandi: 3 }[k._durum] + (k.tarih_durumu === "surekli" ? 1.5 : 0);
-    const zaman = k._durum === "kapandi" ? -(k._tarih || 0) : (k._tarih ? +k._tarih : Infinity);
+    const grup = { acik: 0, yakinda: 1, beklenen: 2, kapandi: 4 }[k._durum] + (k.tarih_durumu === "surekli" ? 2.5 : 0);
+    const zaman = k._durum === "kapandi" ? -(k._tarih || 0)
+      : k._durum === "yakinda" ? +k._acilis
+      : (k._tarih ? +k._tarih : Infinity);
     return [grup, zaman];
   }
   function sirala(liste) {
@@ -103,20 +110,24 @@
   function icsIndir(k) {
     const ymd = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
     const kacis = (s) => s.replace(/([,;\\])/g, "\\$1").replace(/\n/g, "\\n");
-    const ertesi = new Date(k._tarih.getTime() + GUN_MS);
     const tahmini = k.tarih_durumu === "beklenen" ? " (tahmini, geçen yılın tarihi)" : "";
-    const satirlar = [
-      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//staj-takvimi//TR", "CALSCALE:GREGORIAN",
+    const etkinlik = (gun, baslik, alarm) => [
       "BEGIN:VEVENT",
-      `UID:${k.id}-${ymd(k._tarih)}@staj-takvimi`,
+      `UID:${k.id}-${ymd(gun)}@staj-takvimi`,
       `DTSTAMP:${ymd(new Date())}T000000Z`,
-      `DTSTART;VALUE=DATE:${ymd(k._tarih)}`,
-      `DTEND;VALUE=DATE:${ymd(ertesi)}`,
-      `SUMMARY:${kacis(`Son başvuru: ${k.sirket} – ${k.program}${tahmini}`)}`,
+      `DTSTART;VALUE=DATE:${ymd(gun)}`,
+      `DTEND;VALUE=DATE:${ymd(new Date(gun.getTime() + GUN_MS))}`,
+      `SUMMARY:${kacis(`${baslik}: ${k.sirket} – ${k.program}${tahmini}`)}`,
       `DESCRIPTION:${kacis(`Resmi ilan: ${k.url}\nTarihi başvurmadan önce resmi sayfadan doğrula.`)}`,
       `URL:${k.url}`,
-      "BEGIN:VALARM", "TRIGGER:-P7D", "ACTION:DISPLAY", `DESCRIPTION:${kacis(`${k.sirket}: başvuruya 7 gün kaldı`)}`, "END:VALARM",
-      "END:VEVENT", "END:VCALENDAR",
+      ...(alarm ? ["BEGIN:VALARM", `TRIGGER:${alarm[0]}`, "ACTION:DISPLAY", `DESCRIPTION:${kacis(alarm[1])}`, "END:VALARM"] : []),
+      "END:VEVENT",
+    ];
+    const satirlar = [
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//staj-takvimi//TR", "CALSCALE:GREGORIAN",
+      ...(k._acilis && k._acilis > bugun ? etkinlik(k._acilis, "Başvuru açılıyor", ["PT9H", `${k.sirket}: başvuru bugün açılıyor`]) : []),
+      ...etkinlik(k._tarih, "Son başvuru", ["-P7D", `${k.sirket}: başvuruya 7 gün kaldı`]),
+      "END:VCALENDAR",
     ];
     const blob = new Blob([satirlar.join("\r\n")], { type: "text/calendar;charset=utf-8" });
     const a = el("a", { href: URL.createObjectURL(blob), download: `${kucult(k.sirket).replace(/[^a-z0-9ğüşıöç]+/g, "-")}-son-basvuru.ics` });
@@ -129,6 +140,7 @@
     if (k._durum === "kapandi") return el("div", { class: "sayac belirsiz" }, el("span", { class: "gun" }, "—"), el("span", { class: "birim" }, "kapandı"));
     if (k.tarih_durumu === "surekli") return el("div", { class: "sayac acik" }, el("span", { class: "gun" }, "∞"), el("span", { class: "birim" }, "sürekli açık"));
     if (k._gun == null) return el("div", { class: "sayac belirsiz" }, el("span", { class: "gun" }, "?"), el("span", { class: "birim" }, "duyurulmadı"));
+    if (k._durum === "yakinda") return el("div", { class: "sayac yakinda" }, el("span", { class: "gun" }, String(k._acilisGun)), el("span", { class: "birim" }, "gün sonra açılıyor"));
     const sinif = k._durum === "beklenen" ? "belirsiz" : k._acil ? "acil" : "acik";
     const gunMetni = k._gun === 0 ? "bugün" : String(k._gun);
     const birim = k._gun === 0 ? "son gün" : k._durum === "beklenen" ? "gün (tahmini)" : "gün kaldı";
@@ -143,10 +155,30 @@
     return p;
   }
 
+  const aralikYaz = (bas, bit) => {
+    if (!bas) return tarihYaz(bit);
+    const ayniYil = bas.getFullYear() === bit.getFullYear();
+    return `${bas.getDate()} ${AYLAR_UZUN[bas.getMonth()]}${ayniYil ? "" : " " + bas.getFullYear()} – ${tarihYaz(bit)}`;
+  };
+
+  // Başvuru penceresi ve staj dönemi; beklenenlerde geçen yılın tarihleri olduğu açıkça yazılır
+  function zamanSatirlari(k) {
+    const satirlar = [];
+    const gecen = k.tarih_durumu === "beklenen";
+    const orijinal = (s) => (s ? tarihOku(s) : null);
+    if (k._tarih) {
+      const [bas, bit] = gecen ? [orijinal(k.basvuru_acilis), orijinal(k.son_basvuru)] : [k._acilis, k._tarih];
+      satirlar.push([gecen ? "Başvuru (geçen yıl)" : "Başvuru", bas ? aralikYaz(bas, bit) : `son gün ${tarihYaz(bit)}`]);
+    }
+    if (k.donem_baslangic || k.donem_bitis) {
+      const bas = orijinal(k.donem_baslangic), bit = orijinal(k.donem_bitis);
+      satirlar.push([gecen ? "Dönem (geçen yıl)" : "Staj/program dönemi", bas && bit ? aralikYaz(bas, bit) : tarihYaz(bas || bit)]);
+    }
+    return satirlar;
+  }
+
   function kayitCiz(k) {
-    const tarihEtiketi = k._tarih
-      ? (k.tarih_durumu === "beklenen" ? `Geçen yıl: ${tarihYaz(tarihOku(k.son_basvuru))}` : `Son başvuru: ${tarihYaz(k._tarih)}`)
-      : null;
+    const zaman = zamanSatirlari(k);
     const url = guvenliUrl(k.url);
     return el("li", { class: `kayit${k._durum === "kapandi" ? " kapandi" : ""}`, id: `k-${k.id}` },
       sayac(k),
@@ -154,19 +186,21 @@
         el("h3", { class: "sirket" }, k.sirket),
         el("p", { class: "program" }, k.program),
         el("ul", { class: "etiketler" },
-          el("li", {}, VERI.turler[k.tur] || k.tur),
+          k.bolge === "yurt-disi" ? el("li", { class: "dis" }, "🌍 Yurt dışı") : null,
+          k.tur !== "yurt-disi" ? el("li", {}, VERI.turler[k.tur] || k.tur) : null,
           k.alan.map((a) => el("li", {}, VERI.alanlar[a] || a)),
           (k.sehir || []).length ? el("li", {}, k.sehir.join(", ")) : null,
           sartlar(k).map((s) => el("li", {}, s)),
-          tarihEtiketi ? el("li", { class: "tarih" }, tarihEtiketi) : null,
         ),
+        zaman.length ? el("dl", { class: "zaman" }, zaman.map(([d, t]) => [el("dt", {}, d), el("dd", {}, t)])) : null,
         k.notlar ? el("p", { class: "not" }, k.notlar) : null,
       ),
       el("div", { class: "eylem" },
         VERI.ozel && k.skor != null ? el("span", { class: "skor", title: "TOPSIS skoru" }, `skor ${k.skor.toFixed(1)}`) : null,
         url ? el("a", { class: "buton", href: url, target: "_blank", rel: "noopener noreferrer" }, "Resmi ilan ↗") : null,
         k._tarih && k._durum !== "kapandi"
-          ? el("button", { class: "buton ikincil", type: "button", onclick: () => icsIndir(k) }, "Takvime ekle")
+          ? el("button", { class: "buton ikincil", type: "button", onclick: () => icsIndir(k),
+                           title: k._durum === "yakinda" ? "Açılış ve son gün takvimine eklenir" : "Son gün takvimine eklenir" }, "Takvime ekle")
           : null,
       ),
     );
@@ -210,11 +244,22 @@
       const xPx = oran(k._tarih) * genislik;
       const sagda = xPx < genislik * 0.78;
       const etiketPx = Math.min(k.sirket.length * 7.2 + 30, 170);
-      const [bas, bit] = sagda ? [xPx - 8, xPx + etiketPx] : [xPx - etiketPx, xPx + 8];
+      // Başvuru penceresi biliniyorsa açılıştan son güne bir çubuk çizilir
+      const pencereBas = k._acilis ? Math.max(0, oran(k._acilis)) : null;
+      const pencerePx = pencereBas != null ? pencereBas * genislik : xPx;
+      const [bas, bit] = sagda ? [Math.min(pencerePx, xPx) - 8, xPx + etiketPx] : [Math.min(pencerePx, xPx - etiketPx), xPx + 8];
       let satir = satirSonu.findIndex((s) => s < bas);
       if (satir === -1) { satir = satirSonu.length; satirSonu.push(0); }
       satirSonu[satir] = bit + 6;
-      const etiket = `${k.sirket} – ${k.program}: ${tarihYaz(k._tarih)}${k.tarih_durumu === "beklenen" ? " (tahmini)" : ""}`;
+      const pencereMetni = k._acilis ? `başvuru ${aralikYaz(k._acilis, k._tarih)}` : `son gün ${tarihYaz(k._tarih)}`;
+      const etiket = `${k.sirket} – ${k.program}: ${pencereMetni}${k.tarih_durumu === "beklenen" ? " (tahmini)" : ""}`;
+      if (pencereBas != null && pencereBas < oran(k._tarih)) {
+        serit.append(el("div", {
+          class: `pencere${k.tarih_durumu === "beklenen" ? " beklenen" : ""}${k._durum === "acik" ? " acik" : ""}`,
+          style: `left:${(pencereBas * 100).toFixed(2)}%;width:${((oran(k._tarih) - pencereBas) * 100).toFixed(2)}%;top:${UST + satir * SATIR}px`,
+          "aria-hidden": "true",
+        }));
+      }
       serit.append(el("button", {
         type: "button", role: "listitem",
         class: `isaret${sagda ? "" : " solda"}${k.tarih_durumu === "beklenen" ? " beklenen" : ""}${k._acil ? " acil" : ""}`,
@@ -244,11 +289,11 @@
   // ---- özet --------------------------------------------------------------
   function ozetCiz() {
     const aktif = programlar.filter((k) => k._durum !== "kapandi");
-    const acik = aktif.filter((k) => k._durum === "acik").length;
-    const yakinda = aktif.filter((k) => k._durum === "acik" && k._gun != null && k._gun <= 30).length;
+    const say = (d) => aktif.filter((k) => k._durum === d).length;
+    const kapaniyor = aktif.filter((k) => k._durum === "acik" && k._gun != null && k._gun <= 30).length;
     const ozet = $("ozet");
-    ozet.replaceChildren(`${aktif.length} program · ${acik} başvuruya açık · ${aktif.length - acik} beklenen`);
-    if (yakinda) ozet.append(" · ", el("b", {}, `${yakinda} tanesi 30 gün içinde kapanıyor`));
+    ozet.replaceChildren(`${aktif.length} program · ${say("acik")} başvuruya açık · ${say("yakinda")} yakında açılıyor · ${say("beklenen")} beklenen`);
+    if (kapaniyor) ozet.append(" · ", el("b", {}, `${kapaniyor} tanesi 30 gün içinde kapanıyor`));
     if (VERI.ozel) ozet.append(" · ", el("b", {}, "özel görünüm: TOPSIS sıralaması"));
     const son = VERI.programlar.reduce((m, k) => (k.guncelleme > m ? k.guncelleme : m), "");
     if (son) $("guncelleme").textContent = `Verinin son güncellemesi: ${tarihYaz(tarihOku(son))}`;

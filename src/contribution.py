@@ -18,6 +18,8 @@ BOS = {"", "_No response_", "None"}
 BASLIKLAR = {
     "Şirket": "sirket", "Program adı": "program", "Program türü": "tur", "Alan(lar)": "alan",
     "Bölge": "bolge", "Şehir(ler)": "sehir", "Son başvuru tarihi": "son_basvuru",
+    "Başvurunun açıldığı tarih": "basvuru_acilis", "Staj/program başlangıcı": "donem_baslangic",
+    "Staj/program bitişi": "donem_bitis",
     "Tarih durumu": "tarih_durumu", "Başvurabilecek sınıflar": "sinif",
     "Not ortalaması eşiği": "not_esigi", "İngilizce şartı": "ingilizce",
     "Resmi ilan linki": "url", "Not": "notlar", "Kapanan programın linki": "kapanan_url",
@@ -52,6 +54,9 @@ def kayit_olustur(form: dict[str, str], bugun: date) -> dict:
         "bolge": "yurt-disi" if form.get("bolge") == "Yurt dışı" else "TR",
         "sehir": _liste(form.get("sehir", "")),
         "son_basvuru": form.get("son_basvuru") or None,
+        "basvuru_acilis": form.get("basvuru_acilis") or None,
+        "donem_baslangic": form.get("donem_baslangic") or None,
+        "donem_bitis": form.get("donem_bitis") or None,
         "tarih_durumu": _DURUM_TERS.get(form.get("tarih_durumu", ""), form.get("tarih_durumu", "")),
         "sinif": [_SINIF_TERS.get(s, s) for s in _liste(form.get("sinif", ""))],
         "not_esigi": None, "ingilizce": form.get("ingilizce") or None,

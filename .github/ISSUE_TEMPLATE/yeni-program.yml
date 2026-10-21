@@ -17,12 +17,12 @@ body:
   - type: dropdown
     attributes:
       label: Program türü
-      options: [Yaz stajı, Uzun dönem staj, Yeni mezun, Yönetici adayı, Erasmus+, Yurt dışı]
+      options: [Yaz stajı, Uzun dönem staj, Yeni mezun, Yönetici adayı, Erasmus+, Yurt dışı, Araştırma/Burs, Akademi/Kamp]
     validations: {required: true}
   - type: input
     attributes:
       label: Alan(lar)
-      description: "Virgülle ayır. Seçenekler: Yazılım, Veri, Finans, Pazarlama, İK, Hukuk, Makine, Elektrik-Elektronik, İnşaat, Kimya, Endüstri, İş/Operasyon, Tasarım, Tüm bölümler"
+      description: "Virgülle ayır. Seçenekler: Yazılım, Veri, Makine, Elektrik-Elektronik, İnşaat, Kimya, Endüstri, Havacılık-Uzay, Çevre-Enerji, Finans-Ekonomi, Pazarlama, İK, İş/Operasyon, Hukuk, Sağlık, Eğitim, Sosyal bilimler, İletişim-Medya, Kamu-Uluslararası, Mimarlık, Tasarım, Sanat-Kültür, Fen bilimleri, Ziraat-Gıda, Turizm, Tüm bölümler"
     validations: {required: true}
   - type: dropdown
     attributes:
@@ -40,6 +40,14 @@ body:
     attributes:
       label: Son başvuru tarihi
       description: YYYY-AA-GG. "Henüz duyurulmadı" veya "Sürekli açık" ise boş bırak.
+  - type: input
+    attributes:
+      label: Başvurunun açıldığı tarih
+      description: YYYY-AA-GG. Biliniyorsa; "Beklenen" seçtiysen geçen yılın açılış tarihi.
+  - type: input
+    attributes: {label: Staj/program başlangıcı, description: "YYYY-AA-GG, biliniyorsa"}
+  - type: input
+    attributes: {label: Staj/program bitişi, description: "YYYY-AA-GG, biliniyorsa"}
   - type: input
     attributes: {label: Başvurabilecek sınıflar, description: "Örn: 3, 4, Yeni mezun"}
   - type: input

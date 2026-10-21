@@ -10,15 +10,20 @@ from datetime import date
 from pathlib import Path
 
 ALAN_ETIKET = {
-    "yazilim": "Yazılım", "veri": "Veri", "finans": "Finans", "pazarlama": "Pazarlama",
-    "insan-kaynaklari": "İK", "hukuk": "Hukuk", "makine": "Makine",
+    "yazilim": "Yazılım", "veri": "Veri", "makine": "Makine",
     "elektrik-elektronik": "Elektrik-Elektronik", "insaat": "İnşaat", "kimya": "Kimya",
-    "endustri": "Endüstri", "is-operasyon": "İş/Operasyon", "tasarim": "Tasarım",
-    "tum-bolumler": "Tüm bölümler",
+    "endustri": "Endüstri", "havacilik-uzay": "Havacılık-Uzay", "cevre-enerji": "Çevre-Enerji",
+    "finans": "Finans-Ekonomi", "pazarlama": "Pazarlama", "insan-kaynaklari": "İK",
+    "is-operasyon": "İş/Operasyon", "hukuk": "Hukuk", "saglik": "Sağlık", "egitim": "Eğitim",
+    "sosyal-bilimler": "Sosyal bilimler", "iletisim-medya": "İletişim-Medya",
+    "kamu-uluslararasi": "Kamu-Uluslararası", "mimarlik": "Mimarlık", "tasarim": "Tasarım",
+    "sanat-kultur": "Sanat-Kültür", "fen-bilimleri": "Fen bilimleri", "ziraat-gida": "Ziraat-Gıda",
+    "turizm": "Turizm", "tum-bolumler": "Tüm bölümler",
 }
 TUR_ETIKET = {
     "yonetici-adayi": "Yönetici adayı", "yaz-staji": "Yaz stajı", "uzun-donem": "Uzun dönem staj",
     "yeni-mezun": "Yeni mezun", "erasmus": "Erasmus+", "yurt-disi": "Yurt dışı",
+    "arastirma": "Araştırma/Burs", "akademi": "Akademi/Kamp",
 }
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
          "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
@@ -33,15 +38,40 @@ def kapandi_mi(k: dict, bugun: date) -> bool:
     return k["tarih_durumu"] == "kesin" and date.fromisoformat(k["son_basvuru"]) < bugun
 
 
+def yakinda_mi(k: dict, bugun: date) -> bool:
+    """Tarihi kesin ama başvurusu henüz açılmamış."""
+    return (k["tarih_durumu"] == "kesin" and bool(k.get("basvuru_acilis"))
+            and date.fromisoformat(k["basvuru_acilis"]) > bugun)
+
+
+def _gun_ay(s: str, yil: bool = True) -> str:
+    d = date.fromisoformat(s)
+    return f"{d.day} {AYLAR[d.month - 1]}" + (f" {d.year}" if yil else "")
+
+
+def _aralik(bas: str | None, bit: str | None) -> str:
+    if bas and bit:
+        ayni_yil = bas[:4] == bit[:4]
+        return f"{_gun_ay(bas, yil=not ayni_yil)} – {_gun_ay(bit)}"
+    return _gun_ay(bas or bit) if (bas or bit) else ""
+
+
 def _tarih_metni(k: dict) -> str:
     if k["tarih_durumu"] == "surekli":
         return "Sürekli açık"
     if k["tarih_durumu"] == "duyurulmadi":
         return "_Henüz duyurulmadı_" + (f"<br><sub>{_hucre(k['notlar'])}</sub>" if k.get("notlar") else "")
-    d = date.fromisoformat(k["son_basvuru"])
+    pencere = _aralik(k.get("basvuru_acilis"), k["son_basvuru"])
     if k["tarih_durumu"] == "beklenen":
-        return f"_~{AYLAR[d.month - 1]} (geçen yıl {d.day} {AYLAR[d.month - 1]})_"
-    return f"{d.day} {AYLAR[d.month - 1]} {d.year}"
+        return f"_Geçen yıl: {pencere}_"
+    return pencere if k.get("basvuru_acilis") else f"Son gün: {pencere}"
+
+
+def _donem_metni(k: dict) -> str:
+    metin = _aralik(k.get("donem_baslangic"), k.get("donem_bitis"))
+    if metin and k["tarih_durumu"] == "beklenen":
+        return f"_Geçen yıl: {metin}_"
+    return metin or "—"
 
 
 def _sartlar(k: dict) -> str:
@@ -63,16 +93,17 @@ def _hucre(metin: str) -> str:
 
 def _tablo(kayitlar: list[dict]) -> str:
     satirlar = [
-        "| Şirket | Program | Alan | Şehir | Son başvuru | Şartlar | |",
-        "|---|---|---|---|---|---|---|",
+        "| Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for k in kayitlar:
         satirlar.append("| " + " | ".join([
-            f"**{_hucre(k['sirket'])}**",
+            ("🌍 " if k["bolge"] == "yurt-disi" else "") + f"**{_hucre(k['sirket'])}**",
             _hucre(k["program"]) + f"<br><sub>{TUR_ETIKET[k['tur']]}</sub>",
             ", ".join(ALAN_ETIKET[a] for a in k["alan"]),
             _hucre(", ".join(k.get("sehir") or [])) or "—",
             _tarih_metni(k),
+            _donem_metni(k),
             _sartlar(k),
             f"[Başvur]({k['url']})",
         ]) + " |")
@@ -88,21 +119,24 @@ def _sirala(kayitlar: list[dict]) -> list[dict]:
     return sorted(kayitlar, key=anahtar)
 
 
+def durum(k: dict, bugun: date) -> str:
+    """kapandi | acik | yakinda | beklenen | surekli"""
+    if kapandi_mi(k, bugun):
+        return "kapandi"
+    if k["tarih_durumu"] == "kesin":
+        return "yakinda" if yakinda_mi(k, bugun) else "acik"
+    if k["tarih_durumu"] == "surekli":
+        return "surekli"
+    return "beklenen"
+
+
 def bolumler(kayitlar: list[dict], bugun: date) -> dict[str, list[dict]]:
-    sonuc: dict[str, list[dict]] = {"acik": [], "beklenen": [], "surekli": [], "yurt_disi": [], "kapandi": []}
+    sonuc: dict[str, list[dict]] = {"acik": [], "yakinda": [], "beklenen": [], "surekli": [], "kapandi": []}
     for k in kayitlar:
-        if kapandi_mi(k, bugun):
-            sonuc["kapandi"].append(k)
-        elif k["bolge"] == "yurt-disi":
-            sonuc["yurt_disi"].append(k)
-        elif k["tarih_durumu"] == "kesin":
-            sonuc["acik"].append(k)
-        elif k["tarih_durumu"] in ("beklenen", "duyurulmadi"):
-            sonuc["beklenen"].append(k)
-        else:
-            sonuc["surekli"].append(k)
+        sonuc[durum(k, bugun)].append(k)
     for ad in sonuc:
         sonuc[ad] = _sirala(sonuc[ad])
+    sonuc["yakinda"].sort(key=lambda k: k["basvuru_acilis"])  # en önce açılan üstte
     sonuc["kapandi"].reverse()  # en son kapanan en üstte
     return sonuc
 
@@ -110,22 +144,20 @@ def bolumler(kayitlar: list[dict], bugun: date) -> dict[str, list[dict]]:
 def liste_markdown(kayitlar: list[dict], bugun: date) -> str:
     b = bolumler(kayitlar, bugun)
     son_guncelleme = max((k["guncelleme"] for k in kayitlar), default="—")
-    acik_degil = [k for k in kayitlar if not kapandi_mi(k, bugun)]
-    acik_sayi = sum(k["tarih_durumu"] in ("kesin", "surekli") for k in acik_degil)
-    beklenen_sayi = len(acik_degil) - acik_sayi
+    acik_sayi = len(b["acik"]) + len(b["surekli"])
     parcalar = [
-        f"**{len(kayitlar)} program** · {acik_sayi} açık · {beklenen_sayi} beklenen · "
-        f"son veri güncellemesi: {son_guncelleme}",
+        f"**{len(kayitlar)} program** · {acik_sayi} açık · {len(b['yakinda'])} yakında açılıyor · "
+        f"{len(b['beklenen'])} beklenen · son veri güncellemesi: {son_guncelleme}",
     ]
 
     def bolum(baslik: str, aciklama: str, liste: list[dict]) -> None:
         parcalar.append(f"## {baslik}\n\n{aciklama}\n\n" + (_tablo(liste) if liste else "_Şu an kayıt yok._"))
 
-    bolum("🟢 Başvurusu açık", "Son başvuru tarihi kesin olan programlar, yaklaşan tarihe göre sıralı.", b["acik"])
+    bolum("🟢 Başvurusu açık", "Şu an başvurulabilen programlar, son güne göre sıralı. 🌍 = yurt dışı.", b["acik"])
+    bolum("📣 Yakında açılıyor", "Tarihi açıklandı, başvuru henüz başlamadı. En önce açılan üstte.", b["yakinda"])
     bolum("🕒 Beklenen", "Bu dönem için henüz duyurulmamış. Tarih varsa geçen yılın takviminden; "
           "yoksa uydurulmaz. Yaklaşınca resmi sayfayı kontrol et.", b["beklenen"])
     bolum("♾️ Sürekli açık", "Belirli bir son tarihi olmayan, yıl boyu başvuru alan programlar.", b["surekli"])
-    bolum("🌍 Yurt dışı ve Erasmus+", "Türkiye'den başvurulabilen yurt dışı programları.", b["yurt_disi"])
     kapali = _tablo(b["kapandi"]) if b["kapandi"] else "_Şu an kayıt yok._"
     parcalar.append(f"<details>\n<summary>🔒 Kapanmış ({len(b['kapandi'])})</summary>\n\n{kapali}\n\n</details>")
     return "\n\n".join(parcalar)

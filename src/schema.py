@@ -8,11 +8,18 @@ import uuid
 from datetime import date
 from pathlib import Path
 
-TURLER = {"yonetici-adayi", "yaz-staji", "uzun-donem", "yeni-mezun", "erasmus", "yurt-disi"}
+TURLER = {"yonetici-adayi", "yaz-staji", "uzun-donem", "yeni-mezun", "erasmus", "yurt-disi",
+          "arastirma", "akademi"}
 ALANLAR = {
-    "yazilim", "veri", "finans", "pazarlama", "insan-kaynaklari", "hukuk",
-    "makine", "elektrik-elektronik", "insaat", "kimya", "endustri", "is-operasyon",
-    "tasarim", "tum-bolumler",
+    # mühendislik ve teknoloji
+    "yazilim", "veri", "makine", "elektrik-elektronik", "insaat", "kimya", "endustri",
+    "havacilik-uzay", "cevre-enerji",
+    # iş ve ekonomi
+    "finans", "pazarlama", "insan-kaynaklari", "is-operasyon",
+    # diğer alanlar
+    "hukuk", "saglik", "egitim", "sosyal-bilimler", "iletisim-medya", "kamu-uluslararasi",
+    "mimarlik", "tasarim", "sanat-kultur", "fen-bilimleri", "ziraat-gida", "turizm",
+    "tum-bolumler",
 }
 BOLGELER = {"TR", "yurt-disi"}
 # kesin: bu dönemin tarihi açıklandı · beklenen: geçen yılın tarihi biliniyor
@@ -21,7 +28,8 @@ TARIH_DURUMLARI = {"kesin", "beklenen", "duyurulmadi", "surekli"}
 SINIFLAR = {1, 2, 3, 4, "yeni-mezun", "yuksek-lisans"}
 
 ZORUNLU = ("id", "sirket", "program", "tur", "alan", "bolge", "tarih_durumu", "url", "aktif", "eklenme", "guncelleme")
-OPSIYONEL = ("sehir", "son_basvuru", "sinif", "not_esigi", "ingilizce", "notlar", "ozel")
+OPSIYONEL = ("sehir", "son_basvuru", "basvuru_acilis", "donem_baslangic", "donem_bitis",
+             "sinif", "not_esigi", "ingilizce", "notlar", "ozel")
 
 _TARIH = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -81,6 +89,17 @@ def kayit_hatalari(kayit: dict) -> list[str]:
         hatalar.append(f"{etiket}: '{durum}' tarih durumunda son_basvuru gerekli")
     if durum in ("surekli", "duyurulmadi") and son is not None:
         hatalar.append(f"{etiket}: '{durum}' programda son_basvuru boş olmalı")
+
+    # Başvuru penceresi ve staj dönemi: beklenen kayıtlarda bunlar da geçen yılın tarihleri
+    for alan in ("basvuru_acilis", "donem_baslangic", "donem_bitis"):
+        if kayit.get(alan) is not None and not _tarih_mi(kayit[alan]):
+            hatalar.append(f"{etiket}: '{alan}' YYYY-AA-GG olmalı")
+    acilis = kayit.get("basvuru_acilis")
+    if acilis and _tarih_mi(acilis) and son and _tarih_mi(son) and acilis > son:
+        hatalar.append(f"{etiket}: basvuru_acilis son_basvuru'dan sonra olamaz")
+    d_bas, d_bit = kayit.get("donem_baslangic"), kayit.get("donem_bitis")
+    if d_bas and d_bit and _tarih_mi(d_bas) and _tarih_mi(d_bit) and d_bas > d_bit:
+        hatalar.append(f"{etiket}: donem_baslangic donem_bitis'ten sonra olamaz")
 
     esik = kayit.get("not_esigi")
     if esik is not None and not (isinstance(esik, (int, float)) and 0 < esik <= 4):

@@ -29,6 +29,15 @@ def test_gecersiz_tarih(kayit):
     assert kayit_hatalari(kayit(eklenme="21.10.2026"))
 
 
+def test_basvuru_penceresi_ve_donem(kayit):
+    assert kayit_hatalari(kayit(basvuru_acilis="2027-01-10", donem_baslangic="2027-07-01",
+                                donem_bitis="2027-08-31")) == []
+    assert any("basvuru_acilis" in h for h in kayit_hatalari(kayit(basvuru_acilis="2027-03-01")))
+    assert any("donem_baslangic" in h for h in kayit_hatalari(
+        kayit(donem_baslangic="2027-09-01", donem_bitis="2027-07-01")))
+    assert kayit_hatalari(kayit(basvuru_acilis="Ocak"))
+
+
 def test_not_esigi_araligi(kayit):
     assert kayit_hatalari(kayit(not_esigi=2.5)) == []
     assert kayit_hatalari(kayit(not_esigi=75))  # 100'lük sistem değil, 4'lük

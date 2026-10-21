@@ -68,6 +68,70 @@
     "notlar": "Mühendislik bölümleri, en fazla 30 iş günü"
   },
   {
+    "id": "7a53492d-36e4-4247-8a08-7decfec1e3a3",
+    "sirket": "Avrupa Komisyonu",
+    "program": "Blue Book Stajı (Mart dönemi)",
+    "tur": "yurt-disi",
+    "alan": [
+      "kamu-uluslararasi",
+      "hukuk",
+      "finans",
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Brüksel"
+    ],
+    "son_basvuru": "2026-09-04",
+    "tarih_durumu": "beklenen",
+    "sinif": [
+      "yeni-mezun"
+    ],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://traineeships.ec.europa.eu/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "donem_baslangic": "2027-03-01",
+    "donem_bitis": "2027-07-31",
+    "notlar": "Lisans diploması ve iki AB dili (biri İngilizce/Fransızca/Almanca) gerekir. Ekim dönemi başvuruları ayrıca alınır"
+  },
+  {
+    "id": "5c2b3769-6f2a-4a3b-a26d-946dbb765cc0",
+    "sirket": "Avrupa Parlamentosu",
+    "program": "Robert Schuman Stajı (Mart–Temmuz 2027)",
+    "tur": "yurt-disi",
+    "alan": [
+      "kamu-uluslararasi",
+      "hukuk",
+      "iletisim-medya",
+      "sosyal-bilimler",
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Brüksel",
+      "Lüksemburg",
+      "Strazburg"
+    ],
+    "son_basvuru": "2026-10-31",
+    "tarih_durumu": "kesin",
+    "sinif": [
+      "yeni-mezun"
+    ],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://www.europarl.europa.eu/at-your-service/en/work-with-us/traineeships",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "basvuru_acilis": "2026-10-01",
+    "donem_baslangic": "2027-03-01",
+    "donem_bitis": "2027-07-31",
+    "notlar": "Lisans diploması gerekir; aday ülke (Türkiye) vatandaşları başvurabilir. Ücretli"
+  },
+  {
     "id": "edf73e0c-ecbd-40a2-91b2-98a2d6c4d07b",
     "sirket": "Baykar",
     "program": "Güz Dönemi Uzun Dönem Staj",
@@ -75,7 +139,8 @@
     "alan": [
       "yazilim",
       "makine",
-      "elektrik-elektronik"
+      "elektrik-elektronik",
+      "havacilik-uzay"
     ],
     "bolge": "TR",
     "sehir": [],
@@ -88,7 +153,38 @@
     "aktif": true,
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
-    "notlar": "2027 Bahar dönemi başvuruları 14 Ekim 2026'da kapandı"
+    "notlar": "2027 Bahar dönemi (Şubat–Mayıs 2027) başvuruları 14 Ekim 2026'da kapandı",
+    "donem_baslangic": "2026-10-05",
+    "donem_bitis": "2027-01-15"
+  },
+  {
+    "id": "d7e86fb8-2aa2-42b8-bb4c-d3fce56c60d1",
+    "sirket": "Birleşmiş Milletler",
+    "program": "UN Internship Programme",
+    "tur": "yurt-disi",
+    "alan": [
+      "kamu-uluslararasi",
+      "hukuk",
+      "sosyal-bilimler",
+      "iletisim-medya",
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "surekli",
+    "sinif": [
+      4,
+      "yeni-mezun",
+      "yuksek-lisans"
+    ],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://careers.un.org/home?language=en",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "İlanlar birim birim açılır; 2–6 ay, ücretsiz. Mezunlar mezuniyetten sonraki 1 yıl içinde başlamalı"
   },
   {
     "id": "f3849918-81bd-4627-b151-7bbd3eedddab",
@@ -99,7 +195,8 @@
       "yazilim",
       "veri",
       "elektrik-elektronik",
-      "makine"
+      "makine",
+      "fen-bilimleri"
     ],
     "bolge": "yurt-disi",
     "sehir": [
@@ -113,8 +210,58 @@
     "url": "https://careers.cern/summer",
     "aktif": true,
     "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21"
+  },
+  {
+    "id": "36af272a-02f4-47dc-b676-57905260c35c",
+    "sirket": "CERN openlab",
+    "program": "Summer Student Programme",
+    "tur": "yurt-disi",
+    "alan": [
+      "yazilim",
+      "veri",
+      "fen-bilimleri"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Cenevre"
+    ],
+    "son_basvuru": "2026-01-26",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://openlab.cern/summer-student-programme",
+    "aktif": true,
+    "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
-    "notlar": "2026 dönemi son başvuru 26 Ocak'tı"
+    "donem_baslangic": "2026-06-01",
+    "donem_bitis": "2026-08-31",
+    "notlar": "9 hafta, ücretli. Bilgisayar, matematik, mühendislik, fizik öğrencileri"
+  },
+  {
+    "id": "d56a9bc5-fe47-4904-93c1-b79f11ee9d13",
+    "sirket": "Fergani Space",
+    "program": "Dönemlik Staj Programı",
+    "tur": "uzun-donem",
+    "alan": [
+      "havacilik-uzay",
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-10-17",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.ferganispace.com/tr/staj/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "2027 Bahar dönemi başvuruları 17 Ekim 2026'da kapandı"
   },
   {
     "id": "67fa0cf8-2a2b-4c6d-a5c4-4be77275db74",
@@ -202,7 +349,8 @@
     "aktif": true,
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
-    "notlar": "2026'da 6 Ocak'ta açıldı, 31 Mart'a uzatıldı"
+    "notlar": "2026'da 16 Mart'tan 31 Mart'a uzatıldı; tıp, öğretmenlik ve diş hekimliği kapsam dışıydı",
+    "basvuru_acilis": "2026-01-06"
   },
   {
     "id": "d27b5b5a-d6f0-4d8a-aed8-c8cc017fa9a5",
@@ -227,6 +375,62 @@
     "guncelleme": "2026-10-21"
   },
   {
+    "id": "00c09e4f-6865-4fa8-bfb6-ffd6fd87b232",
+    "sirket": "NATO",
+    "program": "NATO Internship Programme",
+    "tur": "yurt-disi",
+    "alan": [
+      "kamu-uluslararasi",
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Brüksel"
+    ],
+    "son_basvuru": "2026-04-30",
+    "tarih_durumu": "beklenen",
+    "sinif": [
+      3,
+      4,
+      "yeni-mezun"
+    ],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://nato.int/en/news-and-events/articles/news/2026/03/25/the-nato-internship-programme-is-now-open-for-applications-",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "basvuru_acilis": "2026-03-25",
+    "notlar": "6 ay, ücretli; Mart veya Eylül başlangıç. 21–30 yaş, NATO üyesi ülke vatandaşı"
+  },
+  {
+    "id": "cce12eac-c7fc-43ef-93b4-2a56b7f1cb5c",
+    "sirket": "OECD",
+    "program": "Internship Programme",
+    "tur": "yurt-disi",
+    "alan": [
+      "finans",
+      "kamu-uluslararasi",
+      "veri",
+      "cevre-enerji",
+      "sosyal-bilimler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Paris"
+    ],
+    "son_basvuru": "2026-12-31",
+    "tarih_durumu": "kesin",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://www.oecd.org/en/about/careers/internships.html",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "Başvurular geldikçe değerlendirilir; bu ilan 31 Aralık'a kadar, sonra yenisi açılır. Kayıtlı öğrenci olmak gerekir"
+  },
+  {
     "id": "cf19d1c3-c687-455e-9089-9cfb6f2a9ae1",
     "sirket": "TSKB",
     "program": "Uzun Dönem Staj Programı",
@@ -247,6 +451,27 @@
     "guncelleme": "2026-10-21"
   },
   {
+    "id": "70558c81-1ee4-4c7c-941c-dd3e98e22081",
+    "sirket": "TurkMSIC",
+    "program": "IFMSA Mesleki ve Araştırma Değişimi",
+    "tur": "yurt-disi",
+    "alan": [
+      "saglik"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.turkmsic.org",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "Tıp öğrencileri için 4 haftalık klinik/araştırma değişimi; başvuru fakültedeki yerel komiteden"
+  },
+  {
     "id": "53e926b6-3af5-4981-9cbe-7addc262d654",
     "sirket": "TUSAŞ",
     "program": "SKY Discover Yaz Stajı",
@@ -254,7 +479,8 @@
     "alan": [
       "yazilim",
       "makine",
-      "elektrik-elektronik"
+      "elektrik-elektronik",
+      "havacilik-uzay"
     ],
     "bolge": "TR",
     "sehir": [],
@@ -267,7 +493,7 @@
     "aktif": true,
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
-    "notlar": "TUSAŞ'a göre başvurular Mart 2027'de"
+    "notlar": "TUSAŞ'a göre başvurular Mart 2027; staj Temmuz–Eylül arasında iki dönem, 20 iş günü"
   },
   {
     "id": "86ff0c4c-3bb1-47c2-b7e8-9f29127936ba",
@@ -277,7 +503,8 @@
     "alan": [
       "yazilim",
       "makine",
-      "elektrik-elektronik"
+      "elektrik-elektronik",
+      "havacilik-uzay"
     ],
     "bolge": "TR",
     "sehir": [],
@@ -291,6 +518,50 @@
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
     "notlar": "TUSAŞ'a göre Eylül 2027"
+  },
+  {
+    "id": "4c4d5dca-4a50-47f5-a817-a58503e36cfd",
+    "sirket": "TÜBİTAK",
+    "program": "2209-A Üniversite Öğrencileri Araştırma Projeleri",
+    "tur": "arastirma",
+    "alan": [
+      "tum-bolumler"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-11-11",
+    "tarih_durumu": "kesin",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "basvuru_acilis": "2026-10-07",
+    "notlar": "Danışmanlı proje desteği, en fazla 12 ay. Kurum e-imzası 16–23 Kasım"
+  },
+  {
+    "id": "9d65b6e4-3b91-4636-9dcc-d388aba34a4b",
+    "sirket": "TÜBİTAK",
+    "program": "2247-C Stajyer Araştırmacı Bursu (STAR)",
+    "tur": "arastirma",
+    "alan": [
+      "tum-bolumler"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-05-11",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://tubitak.gov.tr/tr/burslar/lisans-onlisans/burs-programlari/2247-c-stajyer-arastirmaci-burs-programi-star",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "basvuru_acilis": "2026-04-27",
+    "notlar": "Bir TÜBİTAK projesinde stajyer araştırmacı olarak burs. Önce proje yürütücüleri ilan açar"
   },
   {
     "id": "04d4aff6-f4f5-4139-ae93-b5974f414bdf",
@@ -312,6 +583,32 @@
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
     "notlar": "TBB'ye göre Eylül–Ekim"
+  },
+  {
+    "id": "3c6a7d39-7702-4142-93aa-476f0e435df4",
+    "sirket": "Türk Eğitim Vakfı",
+    "program": "Üstün Başarı Sanat Bursu",
+    "tur": "arastirma",
+    "alan": [
+      "sanat-kultur"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-11-05",
+    "tarih_durumu": "kesin",
+    "sinif": [
+      2,
+      3,
+      4
+    ],
+    "not_esigi": 3.0,
+    "ingilizce": null,
+    "url": "https://www.tev.org.tr/tr/burslar",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "basvuru_acilis": "2026-10-19",
+    "notlar": "Konservatuvar ve güzel sanatlar öğrencileri. Tarihler haberlerden; resmi sayfadan doğrula"
   },
   {
     "id": "212798d3-1c20-4fe6-98c0-1df2d723bc86",
@@ -353,6 +650,6 @@
     "aktif": true,
     "eklenme": "2026-10-21",
     "guncelleme": "2026-10-21",
-    "notlar": "2026'da 2 Ocak – 31 Mart"
+    "basvuru_acilis": "2026-01-02"
   }
 ]

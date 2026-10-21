@@ -58,8 +58,9 @@ h1 {
 
 h2 { font: 700 22px/1.2 var(--font-baslik); letter-spacing: -0.01em; margin: 0; }
 .bolum-baslik { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-.lejant { display: flex; gap: 16px; margin: 0; font-size: 13px; color: var(--soluk); }
+.lejant { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; font-size: 13px; color: var(--soluk); }
 .lejant span { display: inline-flex; align-items: center; gap: 6px; }
+.lejant .cubuk { display: inline-block; width: 22px; height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--kobalt) 35%, transparent); }
 
 /* Takvim şeridi */
 .serit-alan { margin: 40px 0 36px; }
@@ -112,6 +113,13 @@ h2 { font: 700 22px/1.2 var(--font-baslik); letter-spacing: -0.01em; margin: 0; 
 .isaret.acil .nokta { background: var(--acil); border-color: var(--acil); }
 .isaret.acil .ad { color: var(--acil); font-weight: 600; }
 .isaret .ad { padding: 3px 6px; border-radius: 6px; background: color-mix(in srgb, var(--yuzey) 88%, transparent); }
+.pencere {
+  position: absolute; height: 6px; transform: translateY(-50%);
+  border-radius: 999px; background: color-mix(in srgb, var(--kobalt) 35%, transparent);
+  pointer-events: none;
+}
+.pencere.acik { background: color-mix(in srgb, var(--acik) 45%, transparent); }
+.pencere.beklenen { background: none; border-top: 2px dashed color-mix(in srgb, var(--bekle) 70%, transparent); height: 0; }
 .isaret:hover .nokta, .isaret:focus-visible .nokta, .isaret.secili .nokta { transform: scale(1.35); }
 .isaret:hover .ad, .isaret.secili .ad { background: var(--murekkep); color: var(--zemin); }
 .serit-not { margin: 10px 0 0; font-size: 13px; color: var(--soluk); min-height: 1.4em; }
@@ -153,6 +161,14 @@ input[type="search"], select {
 .sayac.acil .gun { color: var(--acil); }
 .sayac.acik .gun { color: var(--acik); }
 .sayac.belirsiz .gun { color: var(--bekle); font-size: 26px; }
+.sayac.yakinda .gun { color: var(--kobalt); }
+.zaman {
+  display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px;
+  margin: 10px 0 0; font-size: 13px;
+}
+.zaman dt { font: 500 11px/1.8 var(--font-veri); text-transform: uppercase; letter-spacing: 0.05em; color: var(--soluk); }
+.zaman dd { margin: 0; font-family: var(--font-veri); }
+.etiketler li.dis { background: color-mix(in srgb, var(--acik) 14%, transparent); }
 .bilgi { min-width: 0; }
 .sirket { font: 700 18px/1.25 var(--font-baslik); margin: 0; }
 .program { margin: 2px 0 8px; color: var(--soluk); }
