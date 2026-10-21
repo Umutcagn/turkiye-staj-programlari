@@ -1,0 +1,29 @@
+name: link-check
+
+# Haftalık: açılmayan linkleri bir issue'da listeler. Bazı kurum siteleri
+# bot trafiğini engellediği için sonuç bir kontrol listesidir, otomatik silme yapılmaz.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check links
+        id: kontrol
+        run: python main.py links --cikti link_raporu.md
+      - name: Open issue if any failed
+        if: steps.kontrol.outputs.sorunlu == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Link kontrolü: açılmayan linkler" --body-file link_raporu.md --repo "$GITHUB_REPOSITORY"

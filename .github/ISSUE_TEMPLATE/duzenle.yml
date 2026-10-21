@@ -1,0 +1,14 @@
+name: Düzeltme bildir
+description: Bir kayıttaki tarih, şart veya link yanlışsa bildir
+title: "[Düzeltme] Şirket – Program"
+labels: ["duzeltme"]
+body:
+  - type: input
+    attributes: {label: Kaydın linki, description: Listedeki "Başvur" linki}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Ne yanlış, doğrusu ne?}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Kaynak, description: Doğru bilginin geçtiği resmi sayfa}
+    validations: {required: true}

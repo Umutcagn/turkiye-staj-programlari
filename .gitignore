@@ -1,0 +1,9 @@
+# Kişisel veri: endüstri/iş-operasyon kayıtları, profil, başvurular, sıralama
+data/private/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+sonuc.md
+link_raporu.md

@@ -1,0 +1,6 @@
+#!/bin/sh
+# Private veri sızıntısını ve şema hatalarını commit'ten önce yakala.
+python main.py validate || {
+  echo "Commit durduruldu: yukarıdaki hataları düzelt." >&2
+  exit 1
+}

@@ -1,0 +1,35 @@
+name: update-readme
+
+# Veri değişince ve her gün: süresi dolan programları "Kapanmış"a taşır.
+on:
+  push:
+    branches: [main]
+    paths: ["data/programs.json", "src/**", "templates/**"]
+  schedule:
+    - cron: "0 4 * * *"  # 07:00 TSİ
+  workflow_dispatch:
+
+concurrency:
+  group: programs-json
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regenerate README
+        run: python main.py readme
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "README güncellendi"
+          git push

@@ -1,0 +1,358 @@
+[
+  {
+    "id": "923a8d1c-c11b-4eaf-b15b-ba2b2114a45c",
+    "sirket": "Akbank",
+    "program": "Yaz Stajı",
+    "tur": "yaz-staji",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.akbank.com",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TBB'ye göre genelde Mart–Nisan"
+  },
+  {
+    "id": "e23dbab4-b64d-4f21-99f6-74e23cfec389",
+    "sirket": "Alternatif Bank",
+    "program": "Uzun Dönem Stajyer (UDS)",
+    "tur": "uzun-donem",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.youthall.com/AlternatifBank/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TBB'ye göre Ocak–Şubat ve Temmuz–Ağustos"
+  },
+  {
+    "id": "264c12ba-5823-4710-9101-b8ba7a7a3b29",
+    "sirket": "ASELSAN",
+    "program": "a Yetenek Yaz Stajı",
+    "tur": "yaz-staji",
+    "alan": [
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [
+      3,
+      4
+    ],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.youthall.com/tr/yetenek-programlari/aselsan-a-yetenek-yaz-staji-programi",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "Mühendislik bölümleri, en fazla 30 iş günü"
+  },
+  {
+    "id": "edf73e0c-ecbd-40a2-91b2-98a2d6c4d07b",
+    "sirket": "Baykar",
+    "program": "Güz Dönemi Uzun Dönem Staj",
+    "tur": "uzun-donem",
+    "alan": [
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-06-22",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.baykartech.com/tr/staj/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "2027 Bahar dönemi başvuruları 14 Ekim 2026'da kapandı"
+  },
+  {
+    "id": "f3849918-81bd-4627-b151-7bbd3eedddab",
+    "sirket": "CERN",
+    "program": "Summer Student Programme",
+    "tur": "yurt-disi",
+    "alan": [
+      "yazilim",
+      "veri",
+      "elektrik-elektronik",
+      "makine"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [
+      "Cenevre"
+    ],
+    "son_basvuru": "2026-01-26",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": "İleri",
+    "url": "https://careers.cern/summer",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "2026 dönemi son başvuru 26 Ocak'tı"
+  },
+  {
+    "id": "67fa0cf8-2a2b-4c6d-a5c4-4be77275db74",
+    "sirket": "Garanti BBVA",
+    "program": "Staj Programı",
+    "tur": "yaz-staji",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.garantibbva.com.tr/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TBB'ye göre Kasım/Mart ve Ocak–Mart dönemleri"
+  },
+  {
+    "id": "a6381d54-82ea-41a5-8622-9c8105b656bd",
+    "sirket": "IAESTE Türkiye",
+    "program": "Yurt Dışı Teknik Staj Değişimi",
+    "tur": "yurt-disi",
+    "alan": [
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [
+      2,
+      3,
+      4
+    ],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://iaeste.itu.edu.tr",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "Başvuru kendi üniversitenin uluslararası ofisinden; geçmiş dönemlerde Ekim başında açıldı"
+  },
+  {
+    "id": "e611b10a-ae0c-4087-9910-b9c5dd4bfc58",
+    "sirket": "İş Bankası",
+    "program": "MasterClass Staj Programı",
+    "tur": "yaz-staji",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://ik.isbank.com.tr/staj-detayi/masterclass-staj-programi-110",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TBB'ye göre genelde Şubat–Mart"
+  },
+  {
+    "id": "47293bf9-fa3f-470f-a991-407117a09940",
+    "sirket": "İŞKUR / CBİKO",
+    "program": "Ulusal Staj Programı",
+    "tur": "yaz-staji",
+    "alan": [
+      "tum-bolumler"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-03-31",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://ulusalstajprogrami.iskur.gov.tr",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "2026'da 6 Ocak'ta açıldı, 31 Mart'a uzatıldı"
+  },
+  {
+    "id": "d27b5b5a-d6f0-4d8a-aed8-c8cc017fa9a5",
+    "sirket": "Logo Yazılım",
+    "program": "LOG-in Summer Staj Programı",
+    "tur": "yaz-staji",
+    "alan": [
+      "yazilim"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [
+      4
+    ],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.youthall.com/tr/yetenek-programlari/logo-yazilim-log-in-summer-staj-programi",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21"
+  },
+  {
+    "id": "cf19d1c3-c687-455e-9089-9cfb6f2a9ae1",
+    "sirket": "TSKB",
+    "program": "Uzun Dönem Staj Programı",
+    "tur": "uzun-donem",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "surekli",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.tskb.com.tr/",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21"
+  },
+  {
+    "id": "53e926b6-3af5-4981-9cbe-7addc262d654",
+    "sirket": "TUSAŞ",
+    "program": "SKY Discover Yaz Stajı",
+    "tur": "yaz-staji",
+    "alan": [
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.tusas.com/sky",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TUSAŞ'a göre başvurular Mart 2027'de"
+  },
+  {
+    "id": "86ff0c4c-3bb1-47c2-b7e8-9f29127936ba",
+    "sirket": "TUSAŞ",
+    "program": "SKY Experience Aday Mühendislik Programı",
+    "tur": "yeni-mezun",
+    "alan": [
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.tusas.com/sky",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TUSAŞ'a göre Eylül 2027"
+  },
+  {
+    "id": "04d4aff6-f4f5-4139-ae93-b5974f414bdf",
+    "sirket": "Türk Eximbank",
+    "program": "ExIT Uzun Dönem Staj",
+    "tur": "uzun-donem",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.eximbank.gov.tr",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "TBB'ye göre Eylül–Ekim"
+  },
+  {
+    "id": "212798d3-1c20-4fe6-98c0-1df2d723bc86",
+    "sirket": "Türkiye Ulusal Ajansı",
+    "program": "Erasmus+ Staj Hareketliliği",
+    "tur": "erasmus",
+    "alan": [
+      "tum-bolumler"
+    ],
+    "bolge": "yurt-disi",
+    "sehir": [],
+    "son_basvuru": null,
+    "tarih_durumu": "duyurulmadi",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://www.ua.gov.tr",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "Tarihleri her üniversite kendisi ilan eder; Erasmus ofisine sor"
+  },
+  {
+    "id": "0394539a-668c-491f-b885-b021153608dd",
+    "sirket": "Ziraat Bankası",
+    "program": "Staj Programı (Kariyer Kapısı)",
+    "tur": "yaz-staji",
+    "alan": [
+      "finans"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2026-03-31",
+    "tarih_durumu": "beklenen",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyerkapisi.cbiko.gov.tr",
+    "aktif": true,
+    "eklenme": "2026-10-21",
+    "guncelleme": "2026-10-21",
+    "notlar": "2026'da 2 Ocak – 31 Mart"
+  }
+]

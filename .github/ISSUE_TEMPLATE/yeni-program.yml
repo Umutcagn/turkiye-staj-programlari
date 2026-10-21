@@ -1,0 +1,55 @@
+name: Program ekle
+description: Listede olmayan bir staj / yeni mezun / yurt dışı programı öner
+title: "[Yeni] Şirket – Program"
+labels: ["yeni-program"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Bir moderatör kontrol edip `approved` etiketini koyunca kayıt otomatik eklenir.
+        **Bilmediğin alanı boş bırak; tahmin yazma.**
+  - type: input
+    attributes: {label: Şirket}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Program adı}
+    validations: {required: true}
+  - type: dropdown
+    attributes:
+      label: Program türü
+      options: [Yaz stajı, Uzun dönem staj, Yeni mezun, Yönetici adayı, Erasmus+, Yurt dışı]
+    validations: {required: true}
+  - type: input
+    attributes:
+      label: Alan(lar)
+      description: "Virgülle ayır. Seçenekler: Yazılım, Veri, Finans, Pazarlama, İK, Hukuk, Makine, Elektrik-Elektronik, İnşaat, Kimya, Endüstri, İş/Operasyon, Tasarım, Tüm bölümler"
+    validations: {required: true}
+  - type: dropdown
+    attributes:
+      label: Bölge
+      options: [Türkiye, Yurt dışı]
+    validations: {required: true}
+  - type: input
+    attributes: {label: Şehir(ler), description: Virgülle ayır}
+  - type: dropdown
+    attributes:
+      label: Tarih durumu
+      options: [Kesin (bu dönem açıklandı), Beklenen (geçen yılın tarihi), Henüz duyurulmadı, Sürekli açık]
+    validations: {required: true}
+  - type: input
+    attributes:
+      label: Son başvuru tarihi
+      description: YYYY-AA-GG. "Henüz duyurulmadı" veya "Sürekli açık" ise boş bırak.
+  - type: input
+    attributes: {label: Başvurabilecek sınıflar, description: "Örn: 3, 4, Yeni mezun"}
+  - type: input
+    attributes: {label: Not ortalaması eşiği, description: 4'lük sistemde; ilanda yazmıyorsa boş bırak}
+  - type: input
+    attributes: {label: İngilizce şartı, description: "Örn: B2, İleri"}
+  - type: input
+    attributes:
+      label: Resmi ilan linki
+      description: https:// ile başlayan, şirketin kendi sayfası ya da resmi başvuru platformu
+    validations: {required: true}
+  - type: input
+    attributes: {label: Not, description: Kısa ek bilgi (en fazla 200 karakter)}

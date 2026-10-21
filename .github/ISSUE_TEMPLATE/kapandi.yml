@@ -1,0 +1,10 @@
+name: Kapandı bildir
+description: Listede açık görünen bir program kapandıysa bildir
+title: "[Kapandı] Şirket – Program"
+labels: ["kapandi"]
+body:
+  - type: input
+    attributes:
+      label: Kapanan programın linki
+      description: Listedeki "Başvur" linkinin aynısı
+    validations: {required: true}
