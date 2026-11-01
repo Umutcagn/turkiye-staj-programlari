@@ -1,6 +1,6 @@
 # 🇹🇷 Türkiye Staj ve Kariyer Programları
 
-Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dışı programlarının **tek yerde, son başvuru tarihine göre sıralı** listesi. Her kaydın resmi ilan linki vardır. Tarihi geçen programlar otomatik olarak "Kapanmış" bölümüne taşınır.
+Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, gençlik ve yurt dışı programlarının **tek yerde, son başvuru tarihine göre sıralı** listesi. Her kaydın resmi ilan linki vardır. Tarihi geçen programlar otomatik olarak "Kapanmış" bölümüne taşınır.
 
 **[📅 Takvim görünümü →](https://umutcagn.github.io/turkiye-staj-programlari/)** Alan, tür ve bölgeye göre filtrele; kalan günleri gör; son başvuru tarihini tek tıkla takvimine ekle.
 
@@ -14,7 +14,7 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dış
 ---
 
 <!-- LISTE:BASLANGIC -->
-**27 program** · 5 açık · 0 yakında açılıyor · 21 beklenen · son veri güncellemesi: 2026-10-21
+**37 program** · 11 açık · 0 yakında açılıyor · 23 beklenen · son veri güncellemesi: 2026-11-01
 
 ## 🟢 Başvurusu açık
 
@@ -24,7 +24,13 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dış
 |---|---|---|---|---|---|---|---|
 | **Türk Eğitim Vakfı** | Üstün Başarı Sanat Bursu<br><sub>Araştırma/Burs</sub> | Sanat-Kültür | — | 19 Ekim – 5 Kasım 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 3.00 | [Başvur](https://www.tev.org.tr/tr/burslar) |
 | **TÜBİTAK** | 2209-A Üniversite Öğrencileri Araştırma Projeleri<br><sub>Araştırma/Burs</sub> | Tüm bölümler | — | 7 Ekim – 11 Kasım 2026 | — | Belirtilmemiş | [Başvur](https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri) |
+| **NASA** | Space Apps Challenge 2026<br><sub>Hackathon</sub> | Tüm bölümler | — | Son gün: 14 Kasım 2026 | 14 Kasım – 15 Kasım 2026 | Belirtilmemiş | [Başvur](https://www.spaceappschallenge.org/) |
+| 🌍 **EPFL** | Life Sciences Summer Research Program<br><sub>Araştırma/Burs</sub> | Sağlık, Fen bilimleri | Lozan | Son gün: 15 Kasım 2026 | 5 Temmuz – 27 Ağustos 2027 | İng.: İleri | [Başvur](https://www.epfl.ch/schools/sv/education/summer-research-program/) |
+| 🌍 **EPFL** | Summer@EPFL Araştırma Bursu<br><sub>Araştırma/Burs</sub> | Yazılım, Elektrik-Elektronik, Veri | Lozan | Son gün: 29 Kasım 2026 | — | İng.: İleri | [Başvur](https://summer.epfl.ch/) |
+| **İŞKUR** | Ulusal Staj Programı<br><sub>Yaz stajı</sub> | Tüm bölümler | — | 26 Ekim – 14 Aralık 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 2.00 | [Başvur](https://ulusalstajprogrami.iskur.gov.tr) |
+| 🌍 **ETH Zürih** | Student Summer Research Fellowship (SSRF)<br><sub>Araştırma/Burs</sub> | Yazılım, Veri | Zürih | 1 Kasım – 16 Aralık 2026 | — | İng.: İleri | [Başvur](https://inf.ethz.ch/studies/summer-research-fellowship.html) |
 | 🌍 **OECD** | Internship Programme<br><sub>Yurt dışı</sub> | Finans-Ekonomi, Kamu-Uluslararası, Veri, Çevre-Enerji, Sosyal bilimler | Paris | Son gün: 31 Aralık 2026 | — | İng.: İleri | [Başvur](https://www.oecd.org/en/about/careers/internships.html) |
+| **Baykar** | 2027 Yaz Dönemi Staj<br><sub>Yaz stajı</sub> | Yazılım, Makine, Elektrik-Elektronik, Havacılık-Uzay | — | Son gün: 15 Ocak 2027 | — | Belirtilmemiş | [Başvur](https://kariyer.baykartech.com/tr/staj/) |
 
 ## 📣 Yakında açılıyor
 
@@ -39,9 +45,7 @@ Bu dönem için henüz duyurulmamış. Tarih varsa geçen yılın takviminden; y
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
 | 🌍 **CERN** | Summer Student Programme<br><sub>Yurt dışı</sub> | Yazılım, Veri, Elektrik-Elektronik, Makine, Fen bilimleri | Cenevre | _Geçen yıl: 26 Ocak 2026_ | — | İng.: İleri | [Başvur](https://careers.cern/summer) |
-| 🌍 **CERN openlab** | Summer Student Programme<br><sub>Yurt dışı</sub> | Yazılım, Veri, Fen bilimleri | Cenevre | _Geçen yıl: 26 Ocak 2026_ | _Geçen yıl: 1 Haziran – 31 Ağustos 2026_ | İng.: İleri | [Başvur](https://openlab.cern/summer-student-programme) |
-| **İŞKUR / CBİKO** | Ulusal Staj Programı<br><sub>Yaz stajı</sub> | Tüm bölümler | — | _Geçen yıl: 6 Ocak – 31 Mart 2026_ | — | Belirtilmemiş | [Başvur](https://ulusalstajprogrami.iskur.gov.tr) |
-| **Ziraat Bankası** | Staj Programı (Kariyer Kapısı)<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Geçen yıl: 2 Ocak – 31 Mart 2026_ | — | Belirtilmemiş | [Başvur](https://kariyerkapisi.cbiko.gov.tr) |
+| 🌍 **CERN openlab** | Summer Student Programme<br><sub>Yurt dışı</sub> | Yazılım, Veri, Fen bilimleri | Cenevre | _Geçen yıl: 26 Ocak 2026_ | _Geçen yıl: 1 Haziran – 31 Ağustos 2026_ | İng.: İleri | [Başvur](https://openlab.cern/cern-openlab-summer-student-programme) |
 | 🌍 **NATO** | NATO Internship Programme<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Tüm bölümler | Brüksel | _Geçen yıl: 25 Mart – 30 Nisan 2026_ | — | Sınıf: 3, 4, Yeni mezun<br>İng.: İleri | [Başvur](https://nato.int/en/news-and-events/articles/news/2026/03/25/the-nato-internship-programme-is-now-open-for-applications-) |
 | **TÜBİTAK** | 2247-C Stajyer Araştırmacı Bursu (STAR)<br><sub>Araştırma/Burs</sub> | Tüm bölümler | — | _Geçen yıl: 27 Nisan – 11 Mayıs 2026_ | — | Belirtilmemiş | [Başvur](https://tubitak.gov.tr/tr/burslar/lisans-onlisans/burs-programlari/2247-c-stajyer-arastirmaci-burs-programi-star) |
 | **Baykar** | Güz Dönemi Uzun Dönem Staj<br><sub>Uzun dönem staj</sub> | Yazılım, Makine, Elektrik-Elektronik, Havacılık-Uzay | — | _Geçen yıl: 22 Haziran 2026_ | _Geçen yıl: 5 Ekim 2026 – 15 Ocak 2027_ | Belirtilmemiş | [Başvur](https://kariyer.baykartech.com/tr/staj/) |
@@ -49,14 +53,18 @@ Bu dönem için henüz duyurulmamış. Tarih varsa geçen yılın takviminden; y
 | **Fergani Space** | Dönemlik Staj Programı<br><sub>Uzun dönem staj</sub> | Havacılık-Uzay, Yazılım, Makine, Elektrik-Elektronik | — | _Geçen yıl: 17 Ekim 2026_ | — | Belirtilmemiş | [Başvur](https://kariyer.ferganispace.com/tr/staj/) |
 | **Akbank** | Yaz Stajı<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Henüz duyurulmadı_<br><sub>TBB'ye göre genelde Mart–Nisan</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.akbank.com) |
 | **Alternatif Bank** | Uzun Dönem Stajyer (UDS)<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | _Henüz duyurulmadı_<br><sub>TBB'ye göre Ocak–Şubat ve Temmuz–Ağustos</sub> | — | Belirtilmemiş | [Başvur](https://www.youthall.com/AlternatifBank/) |
+| **Anadolu Ajansı** | Ajans Staj Programı<br><sub>Yaz stajı</sub> | İletişim-Medya | Ankara, İstanbul | _Henüz duyurulmadı_<br><sub>Habercilik ve idari birimlerde yaz ve kış dönemi stajı; başvuru tarihleri AA'nın sosyal medya hesaplarında duyurulur</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.aa.com.tr/?lang=tr) |
+| **Anadolu Ajansı** | Yurt Staj Programı<br><sub>Yaz stajı</sub> | İletişim-Medya | — | _Henüz duyurulmadı_<br><sub>14 bölge müdürlüğünde yaz ve kış dönemi habercilik stajı; tarihler sosyal medyada duyurulur</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.aa.com.tr/?lang=tr) |
 | **ASELSAN** | a Yetenek Yaz Stajı<br><sub>Yaz stajı</sub> | Yazılım, Makine, Elektrik-Elektronik | — | _Henüz duyurulmadı_<br><sub>Mühendislik bölümleri, en fazla 30 iş günü</sub> | — | Sınıf: 3, 4 | [Başvur](https://www.youthall.com/tr/yetenek-programlari/aselsan-a-yetenek-yaz-staji-programi) |
 | **Garanti BBVA** | Staj Programı<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Henüz duyurulmadı_<br><sub>TBB'ye göre Kasım/Mart ve Ocak–Mart dönemleri</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.garantibbva.com.tr/) |
 | 🌍 **IAESTE Türkiye** | Yurt Dışı Teknik Staj Değişimi<br><sub>Yurt dışı</sub> | Tüm bölümler | — | _Henüz duyurulmadı_<br><sub>Başvuru kendi üniversitenin uluslararası ofisinden; geçmiş dönemlerde Ekim başında açıldı</sub> | — | Sınıf: 2, 3, 4 | [Başvur](https://iaeste.itu.edu.tr) |
 | **İş Bankası** | MasterClass Staj Programı<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Henüz duyurulmadı_<br><sub>TBB'ye göre genelde Şubat–Mart</sub> | — | Belirtilmemiş | [Başvur](https://ik.isbank.com.tr/staj-detayi/masterclass-staj-programi-110) |
 | **Logo Yazılım** | LOG-in Summer Staj Programı<br><sub>Yaz stajı</sub> | Yazılım | — | _Henüz duyurulmadı_ | — | Sınıf: 4 | [Başvur](https://www.youthall.com/tr/yetenek-programlari/logo-yazilim-log-in-summer-staj-programi) |
+| **TEKNOFEST** | 2027 Teknoloji Yarışmaları<br><sub>Yarışma</sub> | Tüm bölümler | — | _Henüz duyurulmadı_<br><sub>Onlarca kategori, takım halinde. 2026'da başvurular 15 Ocak'ta açıldı, Şubat'ta kapandı (son gün uzatıldı)</sub> | — | Belirtilmemiş | [Başvur](https://www.teknofest.org/tr/yarismalar/) |
 | 🌍 **TurkMSIC** | IFMSA Mesleki ve Araştırma Değişimi<br><sub>Yurt dışı</sub> | Sağlık | — | _Henüz duyurulmadı_<br><sub>Tıp öğrencileri için 4 haftalık klinik/araştırma değişimi; başvuru fakültedeki yerel komiteden</sub> | — | Belirtilmemiş | [Başvur](https://www.turkmsic.org) |
 | **TUSAŞ** | SKY Discover Yaz Stajı<br><sub>Yaz stajı</sub> | Yazılım, Makine, Elektrik-Elektronik, Havacılık-Uzay | — | _Henüz duyurulmadı_<br><sub>TUSAŞ'a göre başvurular Mart 2027; staj Temmuz–Eylül arasında iki dönem, 20 iş günü</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.tusas.com/sky) |
 | **TUSAŞ** | SKY Experience Aday Mühendislik Programı<br><sub>Yeni mezun</sub> | Yazılım, Makine, Elektrik-Elektronik, Havacılık-Uzay | — | _Henüz duyurulmadı_<br><sub>TUSAŞ'a göre Eylül 2027</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.tusas.com/sky) |
+| **TÜBİTAK** | 2242 Üniversite Öğrencileri Araştırma Proje Yarışmaları<br><sub>Yarışma</sub> | Tüm bölümler | — | _Henüz duyurulmadı_<br><sub>Ön lisans ve lisans; bireysel ya da en fazla 3 kişilik takım, danışman zorunlu değil. TEKNOFEST kapsamında</sub> | — | Belirtilmemiş | [Başvur](https://tubitak.gov.tr/tr/burslar/lisans/yarismalar/2242-universite-ogrencileri-arastirma-proje-yarismalari) |
 | **Türk Eximbank** | ExIT Uzun Dönem Staj<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | _Henüz duyurulmadı_<br><sub>TBB'ye göre Eylül–Ekim</sub> | — | Belirtilmemiş | [Başvur](https://kariyer.eximbank.gov.tr) |
 | 🌍 **Türkiye Ulusal Ajansı** | Erasmus+ Staj Hareketliliği<br><sub>Erasmus+</sub> | Tüm bölümler | — | _Henüz duyurulmadı_<br><sub>Tarihleri her üniversite kendisi ilan eder; Erasmus ofisine sor</sub> | — | Belirtilmemiş | [Başvur](https://www.ua.gov.tr) |
 
@@ -66,15 +74,17 @@ Belirli bir son tarihi olmayan, yıl boyu başvuru alan programlar.
 
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
+| 🌍 **Avrupa Birliği** | Avrupa Dayanışma Programı (gönüllülük)<br><sub>Gençlik programı</sub> | Tüm bölümler | — | Sürekli açık | — | Belirtilmemiş | [Başvur](https://youth.europa.eu/solidarity_en) |
 | 🌍 **Birleşmiş Milletler** | UN Internship Programme<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, Sosyal bilimler, İletişim-Medya, Tüm bölümler | — | Sürekli açık | — | Sınıf: 4, Yeni mezun, YL<br>İng.: İleri | [Başvur](https://careers.un.org/home?language=en) |
-| **TSKB** | Uzun Dönem Staj Programı<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | Sürekli açık | — | Belirtilmemiş | [Başvur](https://kariyer.tskb.com.tr/) |
 
 <details>
-<summary>🔒 Kapanmış (1)</summary>
+<summary>🔒 Kapanmış (3)</summary>
 
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
+| **TSKB** | Uzun Dönem Staj Programı<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | Sürekli açık | — | Belirtilmemiş | [Başvur](https://www.tskb.com.tr/tr/insan-kaynaklari) |
 | 🌍 **Avrupa Parlamentosu** | Robert Schuman Stajı (Mart–Temmuz 2027)<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, İletişim-Medya, Sosyal bilimler, Tüm bölümler | Brüksel, Lüksemburg, Strazburg | 1 Ekim – 31 Ekim 2026 | 1 Mart – 31 Temmuz 2027 | Sınıf: Yeni mezun<br>İng.: İleri | [Başvur](https://www.europarl.europa.eu/at-your-service/en/work-with-us/traineeships) |
+| **Ziraat Bankası** | Staj Programı (Kariyer Kapısı)<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Geçen yıl: 2 Ocak – 31 Mart 2026_ | — | Belirtilmemiş | [Başvur](https://www.ziraatbank.com.tr/tr/bankamiz/insan-kaynaklari/duyurular) |
 
 </details>
 <!-- LISTE:BITIS -->

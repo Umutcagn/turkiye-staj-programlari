@@ -1,0 +1,52 @@
+name: duyuru-izleyici
+
+# Her gün: tarihi açıklanmamış programların resmi sayfalarında yeni dönem
+# duyurusu arar. Bulguları tek bir issue'da toplar; kaydı güncellemek insanın işi.
+on:
+  schedule:
+    - cron: "30 4 * * *"  # 07:30 TSİ
+  workflow_dispatch:
+
+concurrency:
+  group: programs-json
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  izle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Watch official pages
+        id: izle
+        run: python main.py izle --cikti izleme_raporu.md
+      # Durum dosyası yalnızca bir sayfanın önemli satırları değişince değişir; her gün commit olmaz
+      - name: Commit watch state if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/izleme.json
+          git diff --cached --quiet || git commit -m "Duyuru izleyicisi durumu güncellendi"
+          git push
+      - name: Update watch issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASLIK: "Duyuru izleyicisi: yeni dönem açıklanmış olabilir"
+          BULGU: ${{ steps.izle.outputs.bulgu }}
+        run: |
+          mevcut=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$BASLIK\" in:title" --json number --jq '.[0].number // empty')
+          if [ "$BULGU" = "true" ]; then
+            if [ -n "$mevcut" ]; then
+              gh issue edit "$mevcut" --repo "$GITHUB_REPOSITORY" --body-file izleme_raporu.md
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$BASLIK" --body-file izleme_raporu.md
+            fi
+          elif [ -n "$mevcut" ]; then
+            gh issue close "$mevcut" --repo "$GITHUB_REPOSITORY" --comment "Bekleyen bulgu kalmadı."
+          fi

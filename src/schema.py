@@ -9,7 +9,7 @@ from datetime import date
 from pathlib import Path
 
 TURLER = {"yonetici-adayi", "yaz-staji", "uzun-donem", "yeni-mezun", "erasmus", "yurt-disi",
-          "arastirma", "akademi"}
+          "arastirma", "akademi", "yarisma", "hackathon", "genclik"}
 ALANLAR = {
     # mühendislik ve teknoloji
     "yazilim", "veri", "makine", "elektrik-elektronik", "insaat", "kimya", "endustri",

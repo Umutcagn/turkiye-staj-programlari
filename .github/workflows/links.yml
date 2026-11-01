@@ -22,9 +22,21 @@ jobs:
       - name: Check links
         id: kontrol
         run: python main.py links --cikti link_raporu.md
-      - name: Open issue if any failed
-        if: steps.kontrol.outputs.sorunlu == 'true'
+      # Her hafta yeni issue açmak yerine açık olan tek issue'yu günceller,
+      # her şey açılıyorsa onu kapatır.
+      - name: Update link issue
         env:
           GH_TOKEN: ${{ github.token }}
+          BASLIK: "Link kontrolü: açılmayan linkler"
+          SORUNLU: ${{ steps.kontrol.outputs.sorunlu }}
         run: |
-          gh issue create --title "Link kontrolü: açılmayan linkler" --body-file link_raporu.md --repo "$GITHUB_REPOSITORY"
+          mevcut=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$BASLIK\" in:title" --json number --jq '.[0].number // empty')
+          if [ "$SORUNLU" = "true" ]; then
+            if [ -n "$mevcut" ]; then
+              gh issue edit "$mevcut" --repo "$GITHUB_REPOSITORY" --body-file link_raporu.md
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$BASLIK" --body-file link_raporu.md
+            fi
+          elif [ -n "$mevcut" ]; then
+            gh issue close "$mevcut" --repo "$GITHUB_REPOSITORY" --comment "Bu haftaki kontrolde tüm linkler açıldı."
+          fi

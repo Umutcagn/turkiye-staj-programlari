@@ -1,6 +1,8 @@
 {
   "not_ortalamasi": 3.0,
-  "basvurabilecegi_siniflar": [3],
+  "basvurabilecegi_siniflar": [
+    3
+  ],
   "ingilizce": "B2",
   "tur_tercihi": {
     "yaz-staji": 5,
@@ -8,16 +10,31 @@
     "yonetici-adayi": 4,
     "yeni-mezun": 1,
     "erasmus": 3,
-    "yurt-disi": 3
+    "yurt-disi": 3,
+    "yarisma": 3,
+    "hackathon": 3,
+    "genclik": 3
   },
   "agirliklar": {
-    "aciliyet": 0.30,
-    "hedef_uyum": 0.30,
+    "aciliyet": 0.3,
+    "hedef_uyum": 0.3,
     "statu": 0.25,
     "efor": 0.15
   },
   "statu_puani": {},
   "efor_puani": {},
   "bilinmeyen_tarih_gun": 120,
-  "surekli_program_gun": 180
+  "surekli_program_gun": 180,
+  "bolum": {
+    "ad": "Endüstri Müh.",
+    "alanlar": [
+      "endustri",
+      "is-operasyon",
+      "tum-bolumler"
+    ],
+    "turler": [
+      "yonetici-adayi"
+    ],
+    "hedef_basvuru": 25
+  }
 }

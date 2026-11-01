@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Staj Takvimi</title>
-  <meta name="description" content="Türkiye'deki öğrenciler için staj, yeni mezun ve yurt dışı programlarının son başvuru takvimi. Resmi linkli, katkıya açık.">
+  <meta name="description" content="Türkiye'deki öğrenciler için staj, yarışma, hackathon ve gençlik programlarının son başvuru takvimi. Resmi linkli, katkıya açık.">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,12 +12,18 @@
   <header class="ust">
     <div class="ust-ic">
       <h1>Staj takvimi</h1>
-      <p class="aciklama">Türkiye'deki öğrenciler için staj, yeni mezun ve yurt dışı programları. Her kaydın resmi ilan linki var; bilinmeyen tarih ve şartlar uydurulmaz.</p>
+      <p class="aciklama">Türkiye'deki öğrenciler için staj, yarışma, hackathon, gençlik ve yurt dışı programları. Her kaydın resmi ilan linki var; bilinmeyen tarih ve şartlar uydurulmaz.</p>
       <p class="ozet" id="ozet"></p>
     </div>
   </header>
 
   <main>
+    <nav class="sekmeler" id="sekmeler" role="tablist" aria-label="Görünüm" hidden>
+      <button type="button" role="tab" id="sekme-genel" aria-controls="genel" aria-selected="true">Genel liste</button>
+      <button type="button" role="tab" id="sekme-bolum" aria-controls="bolum" aria-selected="false">Bölümüm</button>
+    </nav>
+
+    <div id="genel" role="tabpanel" aria-labelledby="sekme-genel">
     <section class="serit-alan" aria-labelledby="serit-baslik">
       <div class="bolum-baslik">
         <h2 id="serit-baslik">Önümüzdeki 12 ay</h2>
@@ -33,6 +39,7 @@
 
     <section class="liste-alan" aria-labelledby="liste-baslik">
       <h2 id="liste-baslik" class="gorunmez">Programlar</h2>
+      <div class="durumlar" id="durumlar" role="radiogroup" aria-label="Başvuru durumu"></div>
       <form class="filtre" id="filtre" role="search" onsubmit="return false">
         <label class="ara">
           <span class="gorunmez">Ara</span>
@@ -61,6 +68,9 @@
       <p class="sonuc-sayisi" id="sonuc-sayisi" aria-live="polite"></p>
       <ol class="liste" id="liste"></ol>
     </section>
+    </div>
+
+    <section id="bolum" class="bolum" role="tabpanel" aria-labelledby="sekme-bolum" hidden></section>
   </main>
 
   <footer class="alt">

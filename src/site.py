@@ -12,8 +12,23 @@ from src.readme import ALAN_ETIKET, TUR_ETIKET
 REPO = "Umutcagn/turkiye-staj-programlari"
 
 
-def veri_js(programlar: list[dict], ozel: bool) -> str:
+VARSAYILAN_BOLUM = {"ad": "Endüstri Müh.", "alanlar": ["endustri", "is-operasyon", "tum-bolumler"],
+                    "turler": ["yonetici-adayi"], "hedef_basvuru": 25}
+
+
+def bolum_ayari(profil: dict) -> dict:
+    """Özel sitedeki 'Bölümüm' sekmesinin ayarı: profile.json → bolum, eksikler varsayılandan."""
+    bolum = {**VARSAYILAN_BOLUM, **profil.get("bolum", {})}
+    bolum["agirliklar"] = profil["agirliklar"]
+    # Hangi şirketlere gerçekten puan verildi; verilmeyenler sitede "varsayılan 3" diye işaretlenir
+    bolum["puanlanan"] = {"statu": sorted(profil.get("statu_puani", {})), "efor": sorted(profil.get("efor_puani", {}))}
+    return bolum
+
+
+def veri_js(programlar: list[dict], ozel: bool, bolum: dict | None = None) -> str:
     veri = {"programlar": programlar, "alanlar": ALAN_ETIKET, "turler": TUR_ETIKET, "repo": REPO, "ozel": ozel}
+    if ozel and bolum:
+        veri["bolum"] = bolum
     return "window.STAJ = " + json.dumps(veri, ensure_ascii=False, separators=(",", ":")) + ";\n"
 
 
@@ -22,18 +37,18 @@ def skorla(programlar: list[dict], profil: dict, bugun: date) -> list[dict]:
     from src.score import sirala
 
     sirali, elenen = sirala(programlar, profil, bugun)
-    sonuc = [{k: v for k, v in p.items() if k != "kriterler"} for p in sirali]
+    sonuc = [{**p, "kriterler": {a: round(d, 3) for a, d in p["kriterler"].items()}} for p in sirali]
     for p, neden in elenen:
         not_ = f"Elendi: {neden}" + (f" · {p['notlar']}" if p.get("notlar") else "")
-        sonuc.append(dict(p, skor=None, notlar=not_))
+        sonuc.append(dict(p, skor=None, notlar=not_, elenme=neden))
     return sonuc
 
 
-def derle(kaynak: Path, hedef: Path, programlar: list[dict], ozel: bool) -> Path:
+def derle(kaynak: Path, hedef: Path, programlar: list[dict], ozel: bool, bolum: dict | None = None) -> Path:
     if hedef.exists():
         shutil.rmtree(hedef)
     shutil.copytree(kaynak, hedef)
-    (hedef / "data.js").write_text(veri_js(programlar, ozel), encoding="utf-8")
+    (hedef / "data.js").write_text(veri_js(programlar, ozel, bolum), encoding="utf-8")
     if ozel:
         html = hedef / "index.html"
         html.write_text(html.read_text(encoding="utf-8").replace(

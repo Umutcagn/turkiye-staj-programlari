@@ -1,6 +1,6 @@
 # 🇹🇷 Türkiye Staj ve Kariyer Programları
 
-Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dışı programlarının **tek yerde, son başvuru tarihine göre sıralı** listesi. Her kaydın resmi ilan linki vardır. Tarihi geçen programlar otomatik olarak "Kapanmış" bölümüne taşınır.
+Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, gençlik ve yurt dışı programlarının **tek yerde, son başvuru tarihine göre sıralı** listesi. Her kaydın resmi ilan linki vardır. Tarihi geçen programlar otomatik olarak "Kapanmış" bölümüne taşınır.
 
 **[📅 Takvim görünümü →](https://umutcagn.github.io/turkiye-staj-programlari/)** Alan, tür ve bölgeye göre filtrele; kalan günleri gör; son başvuru tarihini tek tıkla takvimine ekle.
 

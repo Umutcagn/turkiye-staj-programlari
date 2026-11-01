@@ -24,6 +24,7 @@ TUR_ETIKET = {
     "yonetici-adayi": "Yönetici adayı", "yaz-staji": "Yaz stajı", "uzun-donem": "Uzun dönem staj",
     "yeni-mezun": "Yeni mezun", "erasmus": "Erasmus+", "yurt-disi": "Yurt dışı",
     "arastirma": "Araştırma/Burs", "akademi": "Akademi/Kamp",
+    "yarisma": "Yarışma", "hackathon": "Hackathon", "genclik": "Gençlik programı",
 }
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
          "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]

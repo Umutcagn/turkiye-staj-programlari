@@ -43,7 +43,7 @@
     const acilis = tasi(k.basvuru_acilis);
     const kapandi = k.aktif === false || (k.tarih_durumu === "kesin" && tarih < bugun);
     const gun = tarih ? Math.round((tarih - bugun) / GUN_MS) : null;
-    let durum = "beklenen";
+    let durum = k.tarih_durumu === "duyurulmadi" ? "bilinmiyor" : "beklenen";
     if (kapandi) durum = "kapandi";
     else if (k.tarih_durumu === "kesin") durum = acilis && acilis > bugun ? "yakinda" : "acik";
     else if (k.tarih_durumu === "surekli") durum = "acik";
@@ -55,7 +55,7 @@
   const programlar = VERI.programlar.map(hazirla);
 
   function siraAnahtari(k) {
-    const grup = { acik: 0, yakinda: 1, beklenen: 2, kapandi: 4 }[k._durum] + (k.tarih_durumu === "surekli" ? 2.5 : 0);
+    const grup = { acik: 0, yakinda: 1, beklenen: 2, bilinmiyor: 3, kapandi: 4 }[k._durum] + (k.tarih_durumu === "surekli" ? 2.5 : 0);
     const zaman = k._durum === "kapandi" ? -(k._tarih || 0)
       : k._durum === "yakinda" ? +k._acilis
       : (k._tarih ? +k._tarih : Infinity);
@@ -70,18 +70,32 @@
   }
 
   // ---- filtreler (URL'de saklanır, paylaşılabilir) ----------------------
-  const filtreAlanlari = ["ara", "alan", "tur", "bolge", "kapali"];
+  const DURUMLAR = [["", "Hepsi"], ["acik", "Şu an açık"], ["yakinda", "Yakında açılıyor"],
+                    ["beklenen", "Tahmini tarihli"], ["bilinmiyor", "Tarih bekleniyor"]];
+  let durumSecili = "";
+  const filtreAlanlari = ["ara", "durum", "alan", "tur", "bolge", "kapali"];
   function filtreOku() {
     return {
-      ara: $("ara").value.trim(), alan: $("alan").value, tur: $("tur").value,
+      ara: $("ara").value.trim(), durum: durumSecili, alan: $("alan").value, tur: $("tur").value,
       bolge: $("bolge").value, kapali: $("kapali").checked,
     };
+  }
+  function durumlariCiz() {
+    const aktif = programlar.filter((k) => k._durum !== "kapandi");
+    $("durumlar").replaceChildren(...DURUMLAR.map(([ad, etiket]) => {
+      const sayi = ad ? aktif.filter((k) => k._durum === ad).length : aktif.length;
+      return el("button", {
+        type: "button", role: "radio", class: `durum d-${ad || "hepsi"}`, "aria-checked": String(ad === durumSecili),
+        disabled: ad && !sayi, onclick: () => { durumSecili = ad; durumlariCiz(); guncelle(); },
+      }, etiket, el("span", { class: "sayi" }, String(sayi)));
+    }));
   }
   function filtreUrldenYukle() {
     const p = new URLSearchParams(location.search);
     for (const ad of filtreAlanlari) {
       if (!p.has(ad)) continue;
       if (ad === "kapali") $("kapali").checked = p.get(ad) === "1";
+      else if (ad === "durum") durumSecili = DURUMLAR.some(([d]) => d === p.get(ad)) ? p.get(ad) : "";
       else $(ad).value = p.get(ad);
     }
   }
@@ -92,10 +106,11 @@
       else if (f[ad]) p.set(ad, f[ad]);
     }
     const q = p.toString();
-    history.replaceState(null, "", q ? `?${q}` : location.pathname);
+    history.replaceState(null, "", (q ? `?${q}` : location.pathname) + location.hash);
   }
   function uyuyor(k, f) {
     if (!f.kapali && k._durum === "kapandi") return false;
+    if (f.durum && k._durum !== f.durum) return false;
     if (f.alan && !k.alan.includes(f.alan) && !k.alan.includes("tum-bolumler")) return false;
     if (f.tur && k.tur !== f.tur) return false;
     if (f.bolge && k.bolge !== f.bolge) return false;
@@ -194,6 +209,7 @@
         ),
         zaman.length ? el("dl", { class: "zaman" }, zaman.map(([d, t]) => [el("dt", {}, d), el("dd", {}, t)])) : null,
         k.notlar ? el("p", { class: "not" }, k.notlar) : null,
+        k.guncelleme ? el("p", { class: "kontrol" }, `Bilgi kontrolü: ${tarihYaz(tarihOku(k.guncelleme))}`) : null,
       ),
       el("div", { class: "eylem" },
         VERI.ozel && k.skor != null ? el("span", { class: "skor", title: "TOPSIS skoru" }, `skor ${k.skor.toFixed(1)}`) : null,
@@ -292,11 +308,136 @@
     const say = (d) => aktif.filter((k) => k._durum === d).length;
     const kapaniyor = aktif.filter((k) => k._durum === "acik" && k._gun != null && k._gun <= 30).length;
     const ozet = $("ozet");
-    ozet.replaceChildren(`${aktif.length} program · ${say("acik")} başvuruya açık · ${say("yakinda")} yakında açılıyor · ${say("beklenen")} beklenen`);
+    ozet.replaceChildren(`${aktif.length} program · ${say("acik")} başvuruya açık · ${say("yakinda")} yakında açılıyor · ` +
+      `${say("beklenen")} tahmini tarihli · ${say("bilinmiyor")} tarih bekleniyor`);
     if (kapaniyor) ozet.append(" · ", el("b", {}, `${kapaniyor} tanesi 30 gün içinde kapanıyor`));
     if (VERI.ozel) ozet.append(" · ", el("b", {}, "özel görünüm: TOPSIS sıralaması"));
     const son = VERI.programlar.reduce((m, k) => (k.guncelleme > m ? k.guncelleme : m), "");
     if (son) $("guncelleme").textContent = `Verinin son güncellemesi: ${tarihYaz(tarihOku(son))}`;
+  }
+
+  // ---- özel: bölüm sekmesi (yalnızca main.py site --ozel) ---------------
+  // Başvuru takibi bu bilgisayardaki tarayıcıda (localStorage) tutulur; yedek için CSV indirilir.
+  const TAKIP_ANAHTAR = "staj-takip-v1";
+  const TAKIP_DURUM = [["", "—"], ["ilgi", "İlgileniyorum"], ["hazirlik", "Hazırlanıyorum"], ["basvurdum", "Başvurdum"],
+                       ["mulakat", "Test / mülakat"], ["teklif", "Teklif"], ["red", "Red"], ["vazgectim", "Vazgeçtim"]];
+  const BASVURULMUS = new Set(["basvurdum", "mulakat", "teklif", "red"]);
+  const KRITER = [["aciliyet", "Aciliyet", 1], ["hedef_uyum", "Hedef uyumu", 5], ["statu", "Statü", 5], ["efor", "Efor", 5]];
+
+  function takipOku() {
+    try { return JSON.parse(localStorage.getItem(TAKIP_ANAHTAR)) || {}; } catch { return {}; }
+  }
+  function takipYaz(id, alan, deger) {
+    const t = takipOku();
+    const kayit = { ...(t[id] || {}), [alan]: deger };
+    if (alan === "durum" && BASVURULMUS.has(deger) && !kayit.tarih) kayit.tarih = new Date().toISOString().slice(0, 10);
+    t[id] = kayit;
+    try { localStorage.setItem(TAKIP_ANAHTAR, JSON.stringify(t)); } catch { /* özel pencere: kaydedilemez */ }
+    return kayit;
+  }
+
+  const bolumdenMi = (k, b) => k.ozel || k.alan.some((a) => b.alanlar.includes(a)) || b.turler.includes(k.tur);
+
+  function kriterCubuk(k, [ad, etiket, ust], b) {
+    const deger = k.kriterler[ad];
+    const varsayilan = (ad === "statu" || ad === "efor") && !(b.puanlanan[ad] || []).includes(k.sirket);
+    const oran = ad === "aciliyet" ? deger : (deger - 1) / (ust - 1);
+    const yazi = ad === "aciliyet" ? deger.toFixed(2) : `${deger}/5`;
+    return el("div", { class: `kriter${ad === "efor" ? " maliyet" : ""}`, title: varsayilan ? "profile.json'da puan yok, 3 varsayıldı" : null },
+      el("span", { class: "k-ad" }, etiket, ad === "efor" ? " ↓" : ""),
+      el("span", { class: "k-cubuk" }, el("i", { style: `width:${Math.max(4, oran * 100).toFixed(0)}%` })),
+      el("span", { class: "k-deger" }, yazi, varsayilan ? el("sup", {}, "v") : null));
+  }
+
+  function bolumKart(k, sira, b) {
+    const t = takipOku()[k.id] || {};
+    const url = guvenliUrl(k.url);
+    const zaman = zamanSatirlari(k);
+    return el("li", { class: `bk${k.skor == null ? " elenen" : ""}${t.durum ? ` t-${t.durum}` : ""}` },
+      el("div", { class: "bk-sira" }, k.skor == null ? "—" : `#${sira}`,
+        el("span", { class: "bk-skor" }, k.skor == null ? "elendi" : `skor ${k.skor.toFixed(1)}`)),
+      el("div", { class: "bk-govde" },
+        el("h3", { class: "sirket" }, k.sirket, k.ozel ? el("span", { class: "rozet" }, "özel") : null),
+        el("p", { class: "program" }, k.program),
+        k.elenme ? el("p", { class: "elenme" }, `Elendi: ${k.elenme}`) : null,
+        el("ul", { class: "etiketler" },
+          el("li", {}, VERI.turler[k.tur] || k.tur),
+          k.alan.map((a) => el("li", {}, VERI.alanlar[a] || a)),
+          sartlar(k).map((s) => el("li", {}, s))),
+        zaman.length ? el("dl", { class: "zaman" }, zaman.map(([d, z]) => [el("dt", {}, d), el("dd", {}, z)])) : null,
+        k.notlar && !k.elenme ? el("p", { class: "not" }, k.notlar) : null,
+        k.kriterler ? el("div", { class: "kriterler" }, KRITER.map((kr) => kriterCubuk(k, kr, b))) : null),
+      el("div", { class: "bk-takip" },
+        sayac(k),
+        el("label", {}, el("span", { class: "etiket" }, "Takip"),
+          el("select", { onchange: (e) => { takipYaz(k.id, "durum", e.target.value); bolumCiz(); } },
+            TAKIP_DURUM.map(([d, ad]) => el("option", { value: d, selected: (t.durum || "") === d }, ad)))),
+        t.tarih ? el("span", { class: "kucuk" }, `başvuru: ${t.tarih}`) : null,
+        el("textarea", { rows: "2", placeholder: "Not: kime yazdım, hangi belge eksik…", "aria-label": `${k.sirket} notu`,
+                         onchange: (e) => takipYaz(k.id, "not", e.target.value) }, t.not || ""),
+        url ? el("a", { class: "buton", href: url, target: "_blank", rel: "noopener noreferrer" }, "Resmi ilan ↗") : null));
+  }
+
+  function takipCsv(liste) {
+    const t = takipOku();
+    const hucre = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const satirlar = [["sirket", "program", "skor", "takip", "basvuru_tarihi", "not", "url"].join(",")];
+    for (const k of liste) {
+      const x = t[k.id] || {};
+      const durum = (TAKIP_DURUM.find(([d]) => d === (x.durum || "")) || ["", ""])[1];
+      satirlar.push([k.sirket, k.program, k.skor?.toFixed(1), durum, x.tarih, x.not, k.url].map(hucre).join(","));
+    }
+    const blob = new Blob(["﻿" + satirlar.join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const a = el("a", { href: URL.createObjectURL(blob), download: "applications.csv" });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  let sadeceBolum = false;
+  function bolumCiz() {
+    const b = VERI.bolum;
+    const hepsi = programlar.filter((k) => k._durum !== "kapandi" && bolumdenMi(k, b));
+    const liste = hepsi
+      .filter((k) => !sadeceBolum || k.ozel || b.turler.includes(k.tur) || k.alan.some((a) => a !== "tum-bolumler" && b.alanlar.includes(a)))
+      .sort((x, y) => (x.skor == null) - (y.skor == null) || (y.skor ?? 0) - (x.skor ?? 0));
+    const takip = Object.values(takipOku());
+    const say = (d) => takip.filter((x) => x.durum === d).length;
+    const basvuru = takip.filter((x) => BASVURULMUS.has(x.durum)).length;
+    const uygun = hepsi.filter((k) => k.skor != null).length;
+    const toplamW = Object.values(b.agirliklar).reduce((a, x) => a + x, 0) || 1;
+    const metrik = (deger, etiket, ...ek) => el("div", { class: "metrik" }, el("b", {}, String(deger)), el("span", {}, etiket), ...ek);
+    let sira = 0;
+    $("bolum").replaceChildren(
+      el("div", { class: "bolum-baslik" },
+        el("h2", {}, `Bölümüm: ${b.ad}`),
+        el("p", { class: "lejant" }, "Uygunluk (ortalama, sınıf, İngilizce) skordan önce kontrol edilir; şartı tutmayanlar en altta.")),
+      el("div", { class: "metrikler" },
+        metrik(uygun, "uygun program"),
+        metrik(hepsi.length - uygun, "şartı tutmuyor"),
+        metrik(`${basvuru}/${b.hedef_basvuru}`, "başvuru hedefi",
+          el("span", { class: "ilerleme", role: "progressbar", "aria-label": "Başvuru hedefi",
+                       "aria-valuemin": "0", "aria-valuemax": String(b.hedef_basvuru), "aria-valuenow": String(basvuru) },
+            el("i", { style: `width:${Math.min(100, basvuru / b.hedef_basvuru * 100).toFixed(0)}%` }))),
+        metrik(say("mulakat"), "test / mülakat"),
+        metrik(say("teklif"), "teklif")),
+      el("p", { class: "agirliklar" }, el("span", { class: "etiket" }, "Ağırlıklar"),
+        KRITER.map(([ad, etiket]) => el("span", {}, `${etiket} %${Math.round((b.agirliklar[ad] || 0) / toplamW * 100)}`)),
+        el("span", { class: "soluk" }, "v: puan verilmemiş, 3 varsayıldı · efor ↓: az olan iyi")),
+      el("div", { class: "bolum-arac" },
+        el("label", { class: "kutu" },
+          el("input", { type: "checkbox", checked: sadeceBolum, onchange: (e) => { sadeceBolum = e.target.checked; bolumCiz(); } }),
+          " Tüm bölümlere açık programları gizle"),
+        el("button", { class: "buton ikincil", type: "button", onclick: () => takipCsv(liste) }, "Takibi CSV indir")),
+      el("ol", { class: "bolum-liste" }, liste.map((k) => bolumKart(k, k.skor == null ? 0 : ++sira, b))));
+  }
+
+  function sekmeSec(ad) {
+    const bolum = ad === "bolum";
+    $("genel").hidden = bolum; $("bolum").hidden = !bolum;
+    $("sekme-genel").setAttribute("aria-selected", String(!bolum));
+    $("sekme-bolum").setAttribute("aria-selected", String(bolum));
+    history.replaceState(null, "", location.pathname + location.search + (bolum ? "#bolum" : ""));
+    if (bolum) bolumCiz(); else guncelle();
   }
 
   // ---- akış --------------------------------------------------------------
@@ -309,6 +450,7 @@
   }
   function filtreleriTemizle() {
     $("ara").value = ""; $("alan").value = ""; $("tur").value = ""; $("bolge").value = ""; $("kapali").checked = false;
+    durumSecili = ""; durumlariCiz();
     guncelle();
   }
 
@@ -323,9 +465,18 @@
   if (VERI.repo) $("katki").href = `https://github.com/${VERI.repo}/issues/new?template=yeni-program.yml`;
   secenekleriDoldur();
   filtreUrldenYukle();
+  durumlariCiz();
   ozetCiz();
   let zamanlayici;
   $("ara").addEventListener("input", () => { clearTimeout(zamanlayici); zamanlayici = setTimeout(guncelle, 120); });
   for (const id of ["alan", "tur", "bolge", "kapali"]) $(id).addEventListener("change", guncelle);
-  guncelle();
+  if (VERI.ozel && VERI.bolum) {
+    $("sekmeler").hidden = false;
+    $("sekme-bolum").textContent = `Bölümüm: ${VERI.bolum.ad}`;
+    $("sekme-genel").addEventListener("click", () => sekmeSec("genel"));
+    $("sekme-bolum").addEventListener("click", () => sekmeSec("bolum"));
+    sekmeSec(location.hash === "#bolum" ? "bolum" : "genel");
+  } else {
+    guncelle();
+  }
 })();
