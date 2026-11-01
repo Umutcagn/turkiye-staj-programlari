@@ -14,7 +14,7 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dış
 ---
 
 <!-- LISTE:BASLANGIC -->
-**27 program** · 6 açık · 0 yakında açılıyor · 21 beklenen · son veri güncellemesi: 2026-10-21
+**27 program** · 5 açık · 0 yakında açılıyor · 21 beklenen · son veri güncellemesi: 2026-10-21
 
 ## 🟢 Başvurusu açık
 
@@ -22,7 +22,6 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yeni mezun ve yurt dış
 
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
-| 🌍 **Avrupa Parlamentosu** | Robert Schuman Stajı (Mart–Temmuz 2027)<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, İletişim-Medya, Sosyal bilimler, Tüm bölümler | Brüksel, Lüksemburg, Strazburg | 1 Ekim – 31 Ekim 2026 | 1 Mart – 31 Temmuz 2027 | Sınıf: Yeni mezun<br>İng.: İleri | [Başvur](https://www.europarl.europa.eu/at-your-service/en/work-with-us/traineeships) |
 | **Türk Eğitim Vakfı** | Üstün Başarı Sanat Bursu<br><sub>Araştırma/Burs</sub> | Sanat-Kültür | — | 19 Ekim – 5 Kasım 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 3.00 | [Başvur](https://www.tev.org.tr/tr/burslar) |
 | **TÜBİTAK** | 2209-A Üniversite Öğrencileri Araştırma Projeleri<br><sub>Araştırma/Burs</sub> | Tüm bölümler | — | 7 Ekim – 11 Kasım 2026 | — | Belirtilmemiş | [Başvur](https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri) |
 | 🌍 **OECD** | Internship Programme<br><sub>Yurt dışı</sub> | Finans-Ekonomi, Kamu-Uluslararası, Veri, Çevre-Enerji, Sosyal bilimler | Paris | Son gün: 31 Aralık 2026 | — | İng.: İleri | [Başvur](https://www.oecd.org/en/about/careers/internships.html) |
@@ -71,9 +70,11 @@ Belirli bir son tarihi olmayan, yıl boyu başvuru alan programlar.
 | **TSKB** | Uzun Dönem Staj Programı<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | Sürekli açık | — | Belirtilmemiş | [Başvur](https://kariyer.tskb.com.tr/) |
 
 <details>
-<summary>🔒 Kapanmış (0)</summary>
+<summary>🔒 Kapanmış (1)</summary>
 
-_Şu an kayıt yok._
+| Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
+|---|---|---|---|---|---|---|---|
+| 🌍 **Avrupa Parlamentosu** | Robert Schuman Stajı (Mart–Temmuz 2027)<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, İletişim-Medya, Sosyal bilimler, Tüm bölümler | Brüksel, Lüksemburg, Strazburg | 1 Ekim – 31 Ekim 2026 | 1 Mart – 31 Temmuz 2027 | Sınıf: Yeni mezun<br>İng.: İleri | [Başvur](https://www.europarl.europa.eu/at-your-service/en/work-with-us/traineeships) |
 
 </details>
 <!-- LISTE:BITIS -->
