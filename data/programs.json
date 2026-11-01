@@ -762,7 +762,7 @@
     "sinif": [],
     "not_esigi": null,
     "ingilizce": null,
-    "son_basvuru": null,
+    "son_basvuru": "2026-04-06",
     "aktif": true,
     "eklenme": "2026-11-01",
     "guncelleme": "2026-11-01",
@@ -773,9 +773,9 @@
       "tum-bolumler"
     ],
     "bolge": "TR",
-    "tarih_durumu": "duyurulmadi",
-    "url": "https://tubitak.gov.tr/tr/burslar/lisans/yarismalar/2242-universite-ogrencileri-arastirma-proje-yarismalari",
-    "notlar": "Ön lisans ve lisans; bireysel ya da en fazla 3 kişilik takım, danışman zorunlu değil. TEKNOFEST kapsamında"
+    "tarih_durumu": "beklenen",
+    "url": "https://tubitak.gov.tr/tr/yarismalar/2242-universite-ogrencileri-arastirma-proje-yarismalari",
+    "notlar": "Türkiye'de ve yurt dışında okuyan ön lisans ve lisans öğrencileri; bireysel ya da en fazla 5 kişilik takım. 2026 başvuruları 6 Nisan 17.30'da kapandı. TEKNOFEST kapsamında"
   },
   {
     "id": "9d65b6e4-3b91-4636-9dcc-d388aba34a4b",
