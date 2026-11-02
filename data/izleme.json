@@ -51,17 +51,17 @@
  "70558c81-1ee4-4c7c-941c-dd3e98e22081": {
   "bulgu": {
    "ornek": [
-    "[UZATMA]2026 - 2027 Dönemi | SCOME Açık Erişim KÇG Takım Başvurusu",
-    "2026 - 2027 Raportör Takım KÇG Takım Üyeliği Başvurusu",
-    "2026 - 2027 SCOME PR ve Dış Görünürlük Takımı Başvuru Formu"
+    "[UZATMA] 2026-2027 | UHC Ve Küresel Sağlık Savunuculuğu KÇG Takım Üyeliği Başvuru Formu",
+    "[UZATILDI] 2026 - 2027 Aktivite Avcıları KÇG Takım Üyeliği Başvurusu",
+    "[UZATMA] 2026-2027 GAP Takımı Koordinatörlüğü Başvurusu"
    ],
    "seviye": "guclu",
-   "tarih": "2026-11-01"
+   "tarih": "2026-11-02"
   },
-  "imza": "2225928fa1cb92a4",
+  "imza": "5b2711ca63d6128d",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 15
+  "yil_sayisi": 10
  },
  "7a53492d-36e4-4247-8a08-7decfec1e3a3": {
   "imza": "da39a3ee5e6b4b0d",
@@ -82,13 +82,24 @@
   "yil_sayisi": 0
  },
  "9d65b6e4-3b91-4636-9dcc-d388aba34a4b": {
-  "imza": "dfd3e35c6a843b99",
+  "bulgu": {
+   "ornek": [],
+   "seviye": "zayif",
+   "tarih": "2026-11-02"
+  },
+  "imza": "469b89a42fb752ec",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
  },
  "a6381d54-82ea-41a5-8622-9c8105b656bd": {
   "imza": "0db8f9740dea8903",
+  "kisa": false,
+  "yil": 2027,
+  "yil_sayisi": 0
+ },
+ "b4aa538f-a93e-4a58-9e07-feca99d6dca9": {
+  "imza": "b8ad739175af5c30",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -108,17 +119,17 @@
  "d56a9bc5-fe47-4904-93c1-b79f11ee9d13": {
   "bulgu": {
    "ornek": [
-    "FERGANİ 2027 Bahar Dönemi Staj STAJ TAKVİMİ",
-    "04.01.2027 - 09.01.2027",
-    "01.02.2027 - 22.05.2027"
+    "FERGANİ 2027 Yaz Dönemi Staj STAJ TAKVİMİ",
+    "15.01.2027",
+    "FERGANİ 2027 Bahar Dönemi Staj STAJ TAKVİMİ"
    ],
    "seviye": "guclu",
-   "tarih": "2026-11-01"
+   "tarih": "2026-11-02"
   },
-  "imza": "6a377f545aabfc34",
+  "imza": "18d8ff499d6fc423",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 9
+  "yil_sayisi": 12
  },
  "e23dbab4-b64d-4f21-99f6-74e23cfec389": {
   "imza": "33b73de5f256983b",
