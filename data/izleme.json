@@ -37,7 +37,16 @@
   "yil_sayisi": 0
  },
  "36af272a-02f4-47dc-b676-57905260c35c": {
-  "imza": "c36c025ec6b178d5",
+  "bulgu": {
+   "ornek": [
+    "The call for applications for the 2027 CERN openlab summer student programme will open in november 2026.",
+    ": 21 June or 28 June 2027",
+    "reply to their application by late March/early April 2027"
+   ],
+   "seviye": "zayif",
+   "tarih": "2026-11-03"
+  },
+  "imza": "bb4ca26f1df7f73c",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 3
@@ -51,17 +60,17 @@
  "70558c81-1ee4-4c7c-941c-dd3e98e22081": {
   "bulgu": {
    "ornek": [
-    "[UZATMA] 2026-2027 | UHC Ve Küresel Sağlık Savunuculuğu KÇG Takım Üyeliği Başvuru Formu",
     "[UZATILDI] 2026 - 2027 Aktivite Avcıları KÇG Takım Üyeliği Başvurusu",
-    "[UZATMA] 2026-2027 GAP Takımı Koordinatörlüğü Başvurusu"
+    "[UZATMA] 2026-2027 GAP Takımı Koordinatörlüğü Başvurusu",
+    "[UZATMA] 2026 - 2027 Raportör Takım KÇG Takım Üyeliği Başvurusu"
    ],
    "seviye": "guclu",
-   "tarih": "2026-11-02"
+   "tarih": "2026-11-03"
   },
-  "imza": "5b2711ca63d6128d",
+  "imza": "016b8e93b9cd4c09",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 10
+  "yil_sayisi": 11
  },
  "7a53492d-36e4-4247-8a08-7decfec1e3a3": {
   "imza": "da39a3ee5e6b4b0d",
