@@ -35,6 +35,10 @@
     "turler": [
       "yonetici-adayi"
     ],
+    "ilgi_alanlari": [
+      "veri",
+      "tasarim"
+    ],
     "hedef_basvuru": 25
   }
 }

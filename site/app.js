@@ -407,7 +407,30 @@
     return kayit;
   }
 
-  const bolumdenMi = (k, b) => k.ozel || k.alan.some((a) => b.alanlar.includes(a)) || b.turler.includes(k.tur);
+  // Bölümüm: ana bölüm (alanlar + türler), ilgi alanları ve tüm bölümlere açık programlar.
+  const anaBolumden = (k, b) => k.ozel || b.turler.includes(k.tur) || k.alan.some((a) => a !== "tum-bolumler" && b.alanlar.includes(a));
+  const bolumdenMi = (k, b) => anaBolumden(k, b) || k.alan.some((a) => b.alanlar.includes(a) || (b.ilgi_alanlari || []).includes(a));
+  function odaklar(b) {
+    return [
+      ["", "Hepsi", () => true],
+      ["ana", `${b.ad} (ana)`, (k) => anaBolumden(k, b)],
+      ...(b.ilgi_alanlari || []).map((a) => [a, VERI.alanlar[a] || a, (k) => k.alan.includes(a)]),
+      ["tum", "Tüm bölümlere açık", (k) => k.alan.includes("tum-bolumler")],
+    ];
+  }
+  function arastirmaLinki(b, etiket) {
+    const konu = etiket === "Hepsi" ? `${b.ad} ve ilgi alanlarım` : etiket;
+    const govde = [
+      `Konu: ${konu}`,
+      "",
+      "Ne arıyorum (staj, yarışma, yeni mezun, şirket adı, şehir…):",
+      "",
+      "",
+      "Günlük araştırma görevi bu issue'yu okur, bulduklarını yalnızca bu özel depoya ekler ve sonucu buraya yazar.",
+    ].join("\n");
+    return `https://github.com/${b.ozel_repo}/issues/new?labels=arastirma&title=${encodeURIComponent(`Ek araştırma: ${konu}`)}` +
+           `&body=${encodeURIComponent(govde)}`;
+  }
 
   function kriterCubuk(k, [ad, etiket, ust], b) {
     const deger = k.kriterler[ad];
@@ -465,12 +488,14 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
-  let sadeceBolum = false;
+  let odak = "";
   function bolumCiz() {
     const b = VERI.bolum;
     const hepsi = programlar.filter((k) => k._durum !== "kapandi" && bolumdenMi(k, b));
+    const secenekler = odaklar(b);
+    const [, odakEtiket, odakFiltre] = secenekler.find(([ad]) => ad === odak) || secenekler[0];
     const liste = hepsi
-      .filter((k) => !sadeceBolum || k.ozel || b.turler.includes(k.tur) || k.alan.some((a) => a !== "tum-bolumler" && b.alanlar.includes(a)))
+      .filter(odakFiltre)
       .sort((x, y) => (x.skor == null) - (y.skor == null) || (y.skor ?? 0) - (x.skor ?? 0));
     const takip = Object.values(takipOku());
     const say = (d) => takip.filter((x) => x.durum === d).length;
@@ -495,11 +520,17 @@
       el("p", { class: "agirliklar" }, el("span", { class: "etiket" }, "Ağırlıklar"),
         KRITER.map(([ad, etiket]) => el("span", {}, `${etiket} %${Math.round((b.agirliklar[ad] || 0) / toplamW * 100)}`)),
         el("span", { class: "soluk" }, "v: puan verilmemiş, 3 varsayıldı · efor ↓: az olan iyi")),
+      el("div", { class: "durumlar", role: "radiogroup", "aria-label": "İlgi alanına göre daralt" },
+        secenekler.map(([ad, etiket, f]) => el("button", {
+          class: "durum", type: "button", role: "radio", "aria-checked": String(ad === odak),
+          onclick: () => { odak = ad; bolumCiz(); } }, etiket, " ", el("span", { class: "sayi" }, String(hepsi.filter(f).length))))),
       el("div", { class: "bolum-arac" },
-        el("label", { class: "kutu" },
-          el("input", { type: "checkbox", checked: sadeceBolum, onchange: (e) => { sadeceBolum = e.target.checked; bolumCiz(); } }),
-          " Tüm bölümlere açık programları gizle"),
-        el("button", { class: "buton ikincil", type: "button", onclick: () => takipCsv(liste) }, "Takibi CSV indir")),
+        el("span", { class: "kucuk" }, `${liste.length} program · ${odakEtiket}`),
+        el("span", { class: "bolum-dugmeler" },
+          b.ozel_repo ? el("a", { class: "buton ikincil", href: arastirmaLinki(b, odakEtiket), target: "_blank", rel: "noopener noreferrer",
+                                   title: "Özel depoda bir issue açar; günlük görev bu konuyu ayrıca araştırır" },
+                           `Ek araştırma iste: ${odakEtiket === "Hepsi" ? b.ad : odakEtiket} ↗`) : null,
+          el("button", { class: "buton ikincil", type: "button", onclick: () => takipCsv(liste) }, "Takibi CSV indir"))),
       el("ol", { class: "bolum-liste" }, liste.map((k) => bolumKart(k, k.skor == null ? 0 : ++sira, b))));
   }
 

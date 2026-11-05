@@ -62,3 +62,11 @@ def test_linkedin_akisi_veriye_girer(kayit):
     v = _veri(veri_js([kayit()], ozel=False, linkedin=[g]))
     assert v["linkedin"][0]["url"] == g["url"]
     assert _veri(veri_js([kayit()], ozel=False))["linkedin"] == []
+
+
+def test_ilgi_alanlari_bolum_ayarina_gecer():
+    from src.site import bolum_ayari
+    profil = {"agirliklar": {}, "bolum": {"ilgi_alanlari": ["veri", "tasarim", "uydurma", "endustri"]}}
+    b = bolum_ayari(profil)
+    assert b["ilgi_alanlari"] == ["veri", "tasarim"]  # bilinmeyen ve ana bölümde olan elenir
+    assert b["ozel_repo"] == "Umutcagn/staj-ozel"

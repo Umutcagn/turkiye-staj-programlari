@@ -67,3 +67,8 @@ def test_linkedin_alani(kayit):
 def test_linkedin_resmi_linkin_yerine_gecmez(kayit):
     hatalar = kayit_hatalari(kayit(url="https://www.linkedin.com/jobs/view/1234567890"))
     assert any("resmi sayfa" in h for h in hatalar)
+
+
+def test_endustri_public_listede_yer_almaz(kayit):
+    assert any("Endüstri" in h for h in liste_hatalari([kayit(alan=["endustri", "veri"])], public=True))
+    assert liste_hatalari([kayit(alan=["endustri"])], public=False) == []  # özel listede serbest

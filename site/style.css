@@ -311,3 +311,4 @@ input[type="search"], select {
 .li-kisayol .etiket { flex-basis: 100%; }
 .li-kisayol .buton { height: 34px; padding: 0 12px; font-size: 13px; }
 .buton[hidden] { display: none; }
+.bolum-dugmeler { display: flex; flex-wrap: wrap; gap: 8px; }

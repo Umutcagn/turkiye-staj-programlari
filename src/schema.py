@@ -177,6 +177,9 @@ def liste_hatalari(kayitlar: list[dict], public: bool) -> list[str]:
         gorulen.add(kid)
         if public and k.get("ozel"):
             hatalar.append(f"{k.get('sirket')}: 'ozel' kayıt public listede olamaz")
+        if public and "endustri" in (k.get("alan") or []):
+            hatalar.append(f"{k.get('sirket')}: Endüstri Mühendisliği programları herkese açık listede yer almaz "
+                           "(özel listeye eklenir)")
     return hatalar
 
 

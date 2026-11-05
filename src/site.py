@@ -13,12 +13,15 @@ REPO = "Umutcagn/turkiye-staj-programlari"
 
 
 VARSAYILAN_BOLUM = {"ad": "Endüstri Müh.", "alanlar": ["endustri", "is-operasyon", "tum-bolumler"],
-                    "turler": ["yonetici-adayi"], "hedef_basvuru": 25}
+                    "turler": ["yonetici-adayi"], "ilgi_alanlari": [], "hedef_basvuru": 25,
+                    "ozel_repo": "Umutcagn/staj-ozel"}
 
 
 def bolum_ayari(profil: dict) -> dict:
     """Özel sitedeki 'Bölümüm' sekmesinin ayarı: profile.json → bolum, eksikler varsayılandan."""
     bolum = {**VARSAYILAN_BOLUM, **profil.get("bolum", {})}
+    # Ana bölümün dışında ilgilenilen alanlar (ör. veri, tasarım): sekmede ayrı filtre olur
+    bolum["ilgi_alanlari"] = [a for a in bolum["ilgi_alanlari"] if a in ALAN_ETIKET and a not in bolum["alanlar"]]
     bolum["agirliklar"] = profil["agirliklar"]
     # Hangi şirketlere gerçekten puan verildi; verilmeyenler sitede "varsayılan 3" diye işaretlenir
     bolum["puanlanan"] = {"statu": sorted(profil.get("statu_puani", {})), "efor": sorted(profil.get("efor_puani", {}))}

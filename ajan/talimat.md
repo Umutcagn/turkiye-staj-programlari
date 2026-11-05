@@ -1,13 +1,19 @@
 # Günlük araştırma görevi: talimat
 
-Bu dosya, her gün çalışan Claude Code otomatik görevinin talimatıdır. Görev bu
-depoda çalışır; mail atmaz. Bulduklarını `data/programs.json` ve
-`data/linkedin.json` dosyalarına ekleyip tek bir PR açar. PR birleşince README
-ve dashboard güncellenir.
+Bu dosya, her gün çalışan Claude Code otomatik görevinin talimatıdır. Görev
+iki depoyla çalışır; mail atmaz. Genel kümede bulduklarını PR olarak açar (PR
+birleşince README ve dashboard güncellenir), özel kümede bulduklarını gizli
+depoya doğrudan yazar.
 
-Görev yalnızca **herkese açık genel listeye** yazar. Belirli bir bölüme
-odaklanmaz. Kişisel görünüm ("Bölümüm" sekmesi, TOPSIS sıralaması) yerelde
-`data/private/` altında durur, git'e girmez ve bu görev ona dokunmaz.
+İki ayrı küme var, birbirine karışmaz:
+
+| Küme | Depo | Ne girer |
+|---|---|---|
+| Genel (herkese açık) | `Umutcagn/turkiye-staj-programlari` → `data/programs.json`, `data/linkedin.json` | Tüm bölümler, **Endüstri Mühendisliği hariç**. `validate` endüstri etiketli kaydı reddeder. |
+| Özel (yalnızca sahibi) | `Umutcagn/staj-ozel` (gizli) → `programs_private.json` | Endüstri Mühendisliği, iş/operasyon, yönetici adayı, Big4 ve `profile.json` → `bolum.ilgi_alanlari`'ndaki alanlar (ör. veri, tasarım). Kayıtlarda `"ozel": true`. |
+
+Özel kümeden hiçbir bilgi (kayıt, profil, issue içeriği) genel depoya, PR
+açıklamasına ya da commit mesajına yazılmaz.
 
 ## Kurallar (pazarlıksız)
 
@@ -24,7 +30,7 @@ odaklanmaz. Kişisel görünüm ("Bölümüm" sekmesi, TOPSIS sıralaması) yere
 4. **Tekrar yok.** Eklemeden önce `programs.json` ve `linkedin.json`'da aynı
    kurum + program ya da aynı link var mı bak. Varsa yalnızca eksik bilgiyi
    güncelle (`guncelleme` tarihini bugüne çek).
-5. **Kapsam.** Türkiye'deki öğrenciler ve yeni mezunlar, tüm bölümler: staj,
+5. **Kapsam.** Türkiye'deki öğrenciler ve yeni mezunlar: staj,
    uzun dönem staj, yeni mezun ve yönetici adayı programları, yarışma,
    hackathon, araştırma/burs, akademi/kamp, gençlik ve yurt dışı programları.
    Deneyim isteyen normal iş ilanları girmez.
@@ -35,9 +41,13 @@ odaklanmaz. Kişisel görünüm ("Bölümüm" sekmesi, TOPSIS sıralaması) yere
 
 1. Bugünün tarihini al: `TZ=Europe/Istanbul date +%F`.
 2. `pip install -r requirements.txt`, sonra `python main.py validate`.
-3. **Bakım:** Açık "Duyuru izleyicisi" ve "Link kontrolü" issue'larındaki
-   bulguları resmi sayfadan kontrol et; doğrulananları güncelle.
-4. **Web araması** (Türkçe ve İngilizce, en az 15 sorgu), dengeli dağıt:
+3. **Bakım:** Her iki depodaki açık "Duyuru izleyicisi" ve "Link kontrolü"
+   issue'larındaki bulguları resmi sayfadan kontrol et; doğrulananları güncelle.
+4. **Ek araştırma istekleri:** `Umutcagn/staj-ozel`'deki açık, başlığı
+   "Ek araştırma:" ile başlayan issue'ları oku. Her biri için konuya özel en az
+   5 sorgu yap; bulunanlar özel kümeye girer. Issue'ya ne bulunduğunu (eklenen,
+   elenen, nedeni) yorum olarak yaz; istek karşılandıysa issue'yu kapat.
+5. **Web araması** (Türkçe ve İngilizce, en az 15 sorgu), dengeli dağıt:
    - Yarışma ve hackathon: TEKNOFEST, TÜBİTAK, Coderspace, Techcareer,
      üniversite ve şirket hackathonları, vaka yarışmaları, ideathon ve
      girişimcilik yarışmaları, Türkiye'den katılınabilen online etkinlikler.
@@ -45,7 +55,7 @@ odaklanmaz. Kişisel görünüm ("Bölümüm" sekmesi, TOPSIS sıralaması) yere
      sanayi, kamu kurumları; Avrupa stajları (Erasmus+, IAESTE, AB kurumları).
      İpucu kaynakları: Youthall, Anbean, Toptalent, Kariyer.net, Coderspace.
    - Burs, araştırma, gençlik programları, ücretsiz akademi ve kamplar.
-5. **LinkedIn** (zorunlu adım). LinkedIn'e giriş yapılmaz, sayfa kazınmaz:
+6. **LinkedIn** (zorunlu adım). LinkedIn'e giriş yapılmaz, sayfa kazınmaz:
    - Exa bağlıysa `web_search_exa` ile yalnızca `linkedin.com/posts` ve
      `linkedin.com/jobs/view` sonuçlarını, son 7 gün içinde ara (en az 6
      sorgu): "staj başvuruları açıldı", "yaz stajı 2027", "hackathon
@@ -53,15 +63,20 @@ odaklanmaz. Kişisel görünüm ("Bölümüm" sekmesi, TOPSIS sıralaması) yere
    - Fırsat paylaşan sayfaların son gönderilerine bak: Coderspace, Youthall,
      Anbean, Toptalent, Techcareer.net, Mühendislik Stajları.
    - Exa bağlı değilse bu adımı atla ve PR açıklamasında belirt.
-6. **Doğrula ve yaz.** Her aday için resmi sayfayı aç. Uyanları şemaya göre
-   ekle (`id` için `python -c "import uuid; print(uuid.uuid4())"`,
+7. **Ayır, doğrula ve yaz.** Her aday için resmi sayfayı aç. Endüstri
+   Mühendisliği'ne ya da özel profildeki alanlara yönelikse özel kümeye, değilse
+   genel kümeye ekle (`id` için `python -c "import uuid; print(uuid.uuid4())"`,
    `eklenme` ve `guncelleme` bugün). Sonra:
    `python main.py validate && python main.py readme && python -m pytest tests -q`.
+   Özel kayıtları doğrulamak için `staj-ozel`'i genel deponun `data/private/`
+   klasörüne kopyala (bu klasör git'e girmez) ve aynı `validate`'i çalıştır.
    Hata varsa düzelt; düzeltemiyorsan o kaydı çıkar.
-7. **PR aç.** Dal: `ajan/GG-AA-YYYY`. Değişiklik yoksa PR açma. PR açıklaması:
+8. **Gönder.**
+   - Özel küme: `staj-ozel`'in `main` dalına doğrudan commit ve push.
+   - Genel küme: PR aç. Dal: `ajan/GG-AA-YYYY`. Değişiklik yoksa PR açma. PR açıklaması:
    - Sayılar: sorgu sayısı, bulunan aday, eklenen program, eklenen LinkedIn
      kartı, güncellenen kayıt, elenen aday.
    - Eklenenler: kurum – program – son başvuru – resmi link.
    - Elenenler: kısa neden (resmi sayfa yok, tarih geçmiş, deneyim istiyor,
      tekrar…).
-8. Son mesajında aynı sayıları tek satırda özetle.
+9. Son mesajında iki kümenin sayılarını ayrı ayrı tek satırda özetle.
