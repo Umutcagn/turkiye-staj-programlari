@@ -117,6 +117,55 @@ def kayit_hatalari(kayit: dict) -> list[str]:
     return hatalar
 
 
+AKIS_ZORUNLU = ("id", "kurum", "baslik", "tur", "url", "eklenme")
+AKIS_OPSIYONEL = ("paylasim", "son_basvuru", "notlar", "program_id")
+AKIS_OMUR_GUN = 45  # son başvurusu yazmayan gönderi bu kadar gün sonra panodan düşer
+
+
+def akis_hatalari(akis: list[dict], program_idleri: set[str] | None = None) -> list[str]:
+    """data/linkedin.json: dashboard'daki 'LinkedIn'den' bölümünün kayıtları.
+
+    Bunlar LinkedIn gönderisi ya da ilanına giden bağlantılardır; resmi ilan yerine
+    geçmez. Resmi sayfası doğrulanan fırsat programs.json'a ayrıca eklenir ve
+    program_id ile bağlanır.
+    """
+    hatalar: list[str] = []
+    gorulen_id: set[str] = set()
+    gorulen_url: set[str] = set()
+    for g in akis:
+        etiket = g.get("baslik") or g.get("id") or "?"
+        for alan in AKIS_ZORUNLU:
+            if g.get(alan) in (None, "", []):
+                hatalar.append(f"[linkedin] {etiket}: '{alan}' zorunlu")
+        bilinmeyen = set(g) - set(AKIS_ZORUNLU) - set(AKIS_OPSIYONEL)
+        if bilinmeyen:
+            hatalar.append(f"[linkedin] {etiket}: bilinmeyen alan(lar) {sorted(bilinmeyen)}")
+        if g.get("tur") and g["tur"] not in TURLER:
+            hatalar.append(f"[linkedin] {etiket}: geçersiz tur '{g['tur']}'")
+        if g.get("url") and not LINKEDIN.match(str(g["url"])):
+            hatalar.append(f"[linkedin] {etiket}: url bir LinkedIn ilanı ya da gönderisi olmalı")
+        for alan in ("eklenme", "paylasim", "son_basvuru"):
+            if g.get(alan) is not None and not _tarih_mi(g[alan]):
+                hatalar.append(f"[linkedin] {etiket}: '{alan}' YYYY-AA-GG olmalı")
+        if program_idleri is not None and g.get("program_id") and g["program_id"] not in program_idleri:
+            hatalar.append(f"[linkedin] {etiket}: program_id programs.json'da yok")
+        if g.get("id") in gorulen_id:
+            hatalar.append(f"[linkedin] tekrarlanan id {g['id']}")
+        if g.get("url") in gorulen_url:
+            hatalar.append(f"[linkedin] {etiket}: aynı gönderi iki kez eklenmiş")
+        gorulen_id.add(g.get("id"))
+        gorulen_url.add(g.get("url"))
+    return hatalar
+
+
+def akista_gorunur(g: dict, bugun: date) -> bool:
+    """Son başvurusu geçmemiş; son başvurusu yoksa AKIS_OMUR_GUN günden yeni gönderi."""
+    if g.get("son_basvuru"):
+        return date.fromisoformat(g["son_basvuru"]) >= bugun
+    tarih = g.get("paylasim") or g["eklenme"]
+    return (bugun - date.fromisoformat(tarih)).days <= AKIS_OMUR_GUN
+
+
 def liste_hatalari(kayitlar: list[dict], public: bool) -> list[str]:
     hatalar: list[str] = []
     gorulen: set[str] = set()

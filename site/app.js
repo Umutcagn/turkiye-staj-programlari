@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const VERI = window.STAJ || { programlar: [], alanlar: {}, turler: {}, repo: "", ozel: false };
+  const VERI = window.STAJ || { programlar: [], linkedin: [], alanlar: {}, turler: {}, repo: "", ozel: false };
   const AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
   const AYLAR_UZUN = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
   const GUN_MS = 86400000;
@@ -308,6 +308,71 @@
     }
   }
 
+  // ---- LinkedIn'den ------------------------------------------------------
+  // data/linkedin.json: LinkedIn gönderisi/ilanı bağlantıları. Son başvurusu geçen ya da
+  // (son başvurusu yazmıyorsa) 45 günden eski gönderi gösterilmez.
+  const AKIS_OMUR_GUN = 45;
+  const AKIS_ILK = 6;
+  const akis = (VERI.linkedin || [])
+    .map((g) => {
+      const son = g.son_basvuru ? tarihOku(g.son_basvuru) : null;
+      const paylasim = tarihOku(g.paylasim || g.eklenme);
+      return { ...g, _son: son, _paylasim: paylasim, _gun: son ? Math.round((son - bugun) / GUN_MS) : null };
+    })
+    .filter((g) => linkedinUrl(g.url) && (g._son ? g._son >= bugun : (bugun - g._paylasim) / GUN_MS <= AKIS_OMUR_GUN))
+    .sort((a, b) => (a._son && b._son ? a._son - b._son : a._son ? -1 : b._son ? 1 : b._paylasim - a._paylasim));
+  let akisTumu = false;
+
+  // Her zaman çalışan kısayollar: LinkedIn'in kendi aramasını Türkiye + son bir hafta filtresiyle açar.
+  // İş ilanı aramaları girişsiz de açılır; gönderi (duyuru) aramaları LinkedIn hesabı ister.
+  const LI_IS = "https://www.linkedin.com/jobs/search/?location=T%C3%BCrkiye&f_TPR=r604800&keywords=";
+  const LI_GONDERI = "https://www.linkedin.com/search/results/content/?sortBy=%22date_posted%22&keywords=";
+  const KISAYOLLAR = [
+    ["Staj ilanları", LI_IS + "staj&f_E=1"],
+    ["Internship ilanları", LI_IS + "intern&f_E=1"],
+    ["Yeni mezun ilanları", LI_IS + "yeni%20mezun&f_E=2"],
+    ["Staj duyuruları", LI_GONDERI + "staj%20ba%C5%9Fvurular%C4%B1%20a%C3%A7%C4%B1ld%C4%B1"],
+    ["Hackathon duyuruları", LI_GONDERI + "hackathon%20ba%C5%9Fvuru"],
+    ["Yarışma duyuruları", LI_GONDERI + "yar%C4%B1%C5%9Fma%20ba%C5%9Fvuru%20%C3%B6%C4%9Frenci"],
+  ];
+
+  function akisKart(g) {
+    const program = g.program_id ? programlar.find((k) => k.id === g.program_id) : null;
+    const zaman = g._son
+      ? (g._gun === 0 ? "Son gün bugün" : `Son gün ${tarihYaz(g._son)} · ${g._gun} gün`)
+      : `Paylaşıldı: ${tarihYaz(g._paylasim)}`;
+    return el("li", { class: `li-kart${g._gun != null && g._gun <= ACIL_GUN ? " acil" : ""}` },
+      el("p", { class: "li-kurum" }, g.kurum),
+      el("a", { class: "li-baslik", href: g.url, target: "_blank", rel: "noopener noreferrer" }, g.baslik),
+      el("ul", { class: "etiketler" },
+        el("li", {}, VERI.turler[g.tur] || g.tur),
+        el("li", { class: "tarih" }, zaman)),
+      g.notlar ? el("p", { class: "not" }, g.notlar) : null,
+      el("div", { class: "li-eylem" },
+        el("a", { class: "buton", href: g.url, target: "_blank", rel: "noopener noreferrer" }, "LinkedIn'de aç ↗"),
+        program ? el("a", { class: "li-resmi", href: `#k-${program.id}`,
+                            onclick: () => setTimeout(() => $(`k-${program.id}`)?.classList.add("vurgu"), 0) },
+                     "Listede gör (resmi ilan)") : null));
+  }
+
+  function akisCiz() {
+    $("linkedin-kisayol").replaceChildren(el("span", { class: "etiket" }, "LinkedIn'de ara · son 7 gün"),
+      ...KISAYOLLAR.map(([ad, url]) => el("a", { class: "buton ikincil", href: url, target: "_blank", rel: "noopener noreferrer" }, `${ad} ↗`)));
+    if (!akis.length) {
+      $("linkedin-ozet").textContent = "";
+      $("linkedin-liste").replaceChildren();
+      $("linkedin-tumu").hidden = true;
+      return;
+    }
+    const kapaniyor = akis.filter((g) => g._gun != null && g._gun <= ACIL_GUN).length;
+    $("linkedin-ozet").textContent = `${akis.length} gönderi` + (kapaniyor ? ` · ${kapaniyor} tanesi ${ACIL_GUN} gün içinde kapanıyor` : "");
+    const gosterilen = akisTumu ? akis : akis.slice(0, AKIS_ILK);
+    $("linkedin-liste").replaceChildren(...gosterilen.map(akisKart));
+    const dugme = $("linkedin-tumu");
+    dugme.hidden = akis.length <= AKIS_ILK;
+    dugme.textContent = akisTumu ? "Daha az göster" : `Tümünü göster (${akis.length})`;
+  }
+
   // ---- özet --------------------------------------------------------------
   function ozetCiz() {
     const aktif = programlar.filter((k) => k._durum !== "kapandi");
@@ -474,6 +539,8 @@
   filtreUrldenYukle();
   durumlariCiz();
   ozetCiz();
+  akisCiz();
+  $("linkedin-tumu").addEventListener("click", () => { akisTumu = !akisTumu; akisCiz(); });
   let zamanlayici;
   $("ara").addEventListener("input", () => { clearTimeout(zamanlayici); zamanlayici = setTimeout(guncelle, 120); });
   for (const id of ["alan", "tur", "bolge", "kapali"]) $(id).addEventListener("change", guncelle);

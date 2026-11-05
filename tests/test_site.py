@@ -54,3 +54,11 @@ def test_ozel_veride_kriter_dokumu_ve_bolum_ayari(kayit):
     assert bolum["ad"] == "Endüstri" and bolum["hedef_basvuru"] == 25 and bolum["puanlanan"]["statu"] == ["Örnek A.Ş."]
     assert "bolum" in _veri(veri_js(programlar, ozel=True, bolum=bolum))
     assert "bolum" not in _veri(veri_js(programlar, ozel=False, bolum=bolum))  # public'e asla sızmaz
+
+
+def test_linkedin_akisi_veriye_girer(kayit):
+    g = {"id": "g1", "kurum": "Ö", "baslik": "B", "tur": "yarisma",
+         "url": "https://www.linkedin.com/posts/x", "eklenme": "2026-11-05"}
+    v = _veri(veri_js([kayit()], ozel=False, linkedin=[g]))
+    assert v["linkedin"][0]["url"] == g["url"]
+    assert _veri(veri_js([kayit()], ozel=False))["linkedin"] == []

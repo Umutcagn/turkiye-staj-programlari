@@ -19,6 +19,13 @@ Bir moderatör kontrol edip `approved` etiketini koyunca GitHub Actions kaydı `
 4. **LinkedIn'de gördüğün ilanı da gönderebilirsin.** LinkedIn linkini `LinkedIn linki` alanına yaz; `Resmi ilan linki` alanına ise ilandaki "Başvur" butonunun açtığı şirket sayfasını yaz. LinkedIn linki tek başına resmi kaynak sayılmaz, resmi linkin yanında gösterilir.
 5. Kayıtlar silinmez, kapanınca `aktif: false` yapılır. Böylece geçmiş yılların takvimi korunur.
 
+## Dashboard'daki "LinkedIn'den" bölümü
+`data/linkedin.json` dashboard'da LinkedIn gönderilerine ve ilanlarına giden kartları tutar. Her kayıt:
+`id`, `kurum`, `baslik`, `tur`, `url` (linkedin.com/posts/... ya da /jobs/view/...), `eklenme`; isteğe bağlı `paylasim`, `son_basvuru`, `notlar`, `program_id`.
+- Gönderinin resmi ilanı doğrulandıysa program `programs.json`'a ayrıca eklenir ve `program_id` ile bağlanır; kartta "Listede gör" çıkar.
+- Son başvurusu geçen kart, son başvurusu yazmıyorsa 45 günden eski kart panodan kendiliğinden düşer.
+- Linki ve tarihi gönderide görmediğin bilgiyi yazma.
+
 ## Doğrudan PR (geliştiriciler için)
 ```bash
 pip install -r requirements.txt

@@ -25,8 +25,10 @@ def bolum_ayari(profil: dict) -> dict:
     return bolum
 
 
-def veri_js(programlar: list[dict], ozel: bool, bolum: dict | None = None) -> str:
-    veri = {"programlar": programlar, "alanlar": ALAN_ETIKET, "turler": TUR_ETIKET, "repo": REPO, "ozel": ozel}
+def veri_js(programlar: list[dict], ozel: bool, bolum: dict | None = None,
+            linkedin: list[dict] | None = None) -> str:
+    veri = {"programlar": programlar, "linkedin": linkedin or [], "alanlar": ALAN_ETIKET, "turler": TUR_ETIKET,
+            "repo": REPO, "ozel": ozel}
     if ozel and bolum:
         veri["bolum"] = bolum
     return "window.STAJ = " + json.dumps(veri, ensure_ascii=False, separators=(",", ":")) + ";\n"
@@ -44,11 +46,12 @@ def skorla(programlar: list[dict], profil: dict, bugun: date) -> list[dict]:
     return sonuc
 
 
-def derle(kaynak: Path, hedef: Path, programlar: list[dict], ozel: bool, bolum: dict | None = None) -> Path:
+def derle(kaynak: Path, hedef: Path, programlar: list[dict], ozel: bool, bolum: dict | None = None,
+          linkedin: list[dict] | None = None) -> Path:
     if hedef.exists():
         shutil.rmtree(hedef)
     shutil.copytree(kaynak, hedef)
-    (hedef / "data.js").write_text(veri_js(programlar, ozel, bolum), encoding="utf-8")
+    (hedef / "data.js").write_text(veri_js(programlar, ozel, bolum, linkedin), encoding="utf-8")
     if ozel:
         html = hedef / "index.html"
         html.write_text(html.read_text(encoding="utf-8").replace(

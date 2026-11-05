@@ -15,6 +15,7 @@ KOK = Path(__file__).resolve().parent
 PUBLIC = KOK / "data" / "programs.json"
 PRIVATE_DIZIN = KOK / "data" / "private"
 PRIVATE = PRIVATE_DIZIN / "programs_private.json"
+LINKEDIN = KOK / "data" / "linkedin.json"
 SABLON = KOK / "templates" / "README.header.md"
 README = KOK / "README.md"
 
@@ -34,6 +35,7 @@ def git_private_dosyalari() -> list[str]:
 
 def komut_validate(_: argparse.Namespace) -> int:
     hatalar = schema.liste_hatalari(schema.yukle(PUBLIC), public=True)
+    hatalar += schema.akis_hatalari(schema.yukle(LINKEDIN), {k["id"] for k in schema.yukle(PUBLIC)})
     if PRIVATE.exists():
         hatalar += [f"[private] {h}" for h in schema.liste_hatalari(schema.yukle(PRIVATE), public=False)]
     sizinti = git_private_dosyalari()
@@ -42,7 +44,7 @@ def komut_validate(_: argparse.Namespace) -> int:
     for h in hatalar:
         print("HATA:", h)
     if not hatalar:
-        print(f"Tamam: {len(schema.yukle(PUBLIC))} public kayıt geçerli.")
+        print(f"Tamam: {len(schema.yukle(PUBLIC))} public kayıt, {len(schema.yukle(LINKEDIN))} LinkedIn gönderisi geçerli.")
     return 1 if hatalar else 0
 
 
@@ -284,7 +286,7 @@ def komut_site(args: argparse.Namespace) -> int:
     else:
         programlar = schema.yukle(PUBLIC)
         hedef = KOK / "_site"
-    sayfa = derle(KOK / "site", hedef, programlar, ozel=args.ozel, bolum=bolum)
+    sayfa = derle(KOK / "site", hedef, programlar, ozel=args.ozel, bolum=bolum, linkedin=schema.yukle(LINKEDIN))
     print(f"{len(programlar)} program → {sayfa}")
     return 0
 
