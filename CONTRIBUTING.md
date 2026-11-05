@@ -37,6 +37,6 @@ python -m pytest tests -q
 Yeni kayıt için `id` alanına bir UUID ver: `python -c "import uuid; print(uuid.uuid4())"`.
 
 ## Yerel kullanım: kişisel sıralama
-`data/private/` klasörü git'e girmez. `data/profile.example.json` dosyasını `data/private/profile.json` olarak kopyala ve not ortalamanı, sınıfını, ağırlıklarını gir. Sonra `python main.py rank` komutunu çalıştır. Uygunluk filtresi ve TOPSIS ile kişisel bir başvuru sıralaması üretilir, sonuç `data/private/benim_siralamam.md` dosyasına yazılır. İstersen kendi kayıtlarını `data/private/programs_private.json` dosyasına ekleyebilirsin.
+`data/private/` klasörü git'e girmez. `data/profile.example.json` dosyasını (YBS öğrencisiysen `data/profile.ybs.example.json`) `data/private/profile.json` olarak kopyala ve not ortalamanı, sınıfını, ağırlıklarını gir. Sonra `python main.py rank` komutunu çalıştır. Uygunluk filtresi ve TOPSIS ile kişisel bir başvuru sıralaması üretilir, sonuç `data/private/benim_siralamam.md` dosyasına yazılır. İstersen kendi kayıtlarını `data/private/programs_private.json` dosyasına ekleyebilirsin.
 
 Pre-commit koruması için: `git config core.hooksPath .githooks`

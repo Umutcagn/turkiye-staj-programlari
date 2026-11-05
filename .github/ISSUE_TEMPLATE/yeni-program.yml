@@ -22,7 +22,7 @@ body:
   - type: input
     attributes:
       label: Alan(lar)
-      description: "Virgülle ayır. Seçenekler: Yazılım, Veri, Makine, Elektrik-Elektronik, İnşaat, Kimya, Endüstri, Havacılık-Uzay, Çevre-Enerji, Finans-Ekonomi, Pazarlama, İK, İş/Operasyon, Hukuk, Sağlık, Eğitim, Sosyal bilimler, İletişim-Medya, Kamu-Uluslararası, Mimarlık, Tasarım, Sanat-Kültür, Fen bilimleri, Ziraat-Gıda, Turizm, Tüm bölümler"
+      description: "Virgülle ayır. Seçenekler: Yazılım, Veri, Makine, Elektrik-Elektronik, İnşaat, Kimya, Endüstri, Havacılık-Uzay, Çevre-Enerji, YBS-ERP (iş analizi, ERP/SAP, BT danışmanlığı), Finans-Ekonomi, Pazarlama, İK, İş/Operasyon, Hukuk, Sağlık, Eğitim, Sosyal bilimler, İletişim-Medya, Kamu-Uluslararası, Mimarlık, Tasarım, Sanat-Kültür, Fen bilimleri, Ziraat-Gıda, Turizm, Tüm bölümler"
     validations: {required: true}
   - type: dropdown
     attributes:

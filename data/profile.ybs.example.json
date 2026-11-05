@@ -1,0 +1,45 @@
+{
+  "not_ortalamasi": 3.0,
+  "basvurabilecegi_siniflar": [
+    3
+  ],
+  "ingilizce": "B2",
+  "tur_tercihi": {
+    "yaz-staji": 5,
+    "uzun-donem": 4,
+    "yonetici-adayi": 2,
+    "yeni-mezun": 1,
+    "erasmus": 3,
+    "yurt-disi": 3,
+    "yarisma": 4,
+    "hackathon": 4,
+    "genclik": 3,
+    "akademi": 3,
+    "arastirma": 2
+  },
+  "agirliklar": {
+    "aciliyet": 0.3,
+    "hedef_uyum": 0.3,
+    "statu": 0.25,
+    "efor": 0.15
+  },
+  "statu_puani": {},
+  "efor_puani": {},
+  "bilinmeyen_tarih_gun": 120,
+  "surekli_program_gun": 180,
+  "bolum": {
+    "ad": "YBS",
+    "alanlar": [
+      "ybs",
+      "yazilim",
+      "veri",
+      "is-operasyon",
+      "tum-bolumler"
+    ],
+    "turler": [
+      "hackathon",
+      "yarisma"
+    ],
+    "hedef_basvuru": 25
+  }
+}
