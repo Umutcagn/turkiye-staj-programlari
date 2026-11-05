@@ -13,7 +13,6 @@ ALAN_ETIKET = {
     "yazilim": "Yazılım", "veri": "Veri", "makine": "Makine",
     "elektrik-elektronik": "Elektrik-Elektronik", "insaat": "İnşaat", "kimya": "Kimya",
     "endustri": "Endüstri", "havacilik-uzay": "Havacılık-Uzay", "cevre-enerji": "Çevre-Enerji",
-    "ybs": "YBS-ERP",
     "finans": "Finans-Ekonomi", "pazarlama": "Pazarlama", "insan-kaynaklari": "İK",
     "is-operasyon": "İş/Operasyon", "hukuk": "Hukuk", "saglik": "Sağlık", "egitim": "Eğitim",
     "sosyal-bilimler": "Sosyal bilimler", "iletisim-medya": "İletişim-Medya",

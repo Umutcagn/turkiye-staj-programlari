@@ -14,8 +14,6 @@ ALANLAR = {
     # mühendislik ve teknoloji
     "yazilim", "veri", "makine", "elektrik-elektronik", "insaat", "kimya", "endustri",
     "havacilik-uzay", "cevre-enerji",
-    # yönetim bilişim sistemleri: iş analizi, ERP/SAP, BT danışmanlığı, dijital dönüşüm
-    "ybs",
     # iş ve ekonomi
     "finans", "pazarlama", "insan-kaynaklari", "is-operasyon",
     # diğer alanlar
