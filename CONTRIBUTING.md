@@ -16,7 +16,8 @@ Bir moderatör kontrol edip `approved` etiketini koyunca GitHub Actions kaydı `
    - `Beklenen`: geçen yılın tarihi biliniyor, bu yıl henüz açıklanmadı.
    - `Henüz duyurulmadı`: tarih bilinmiyor.
    - `Sürekli açık`: yıl boyu başvuru alınıyor.
-4. Kayıtlar silinmez, kapanınca `aktif: false` yapılır. Böylece geçmiş yılların takvimi korunur.
+4. **LinkedIn'de gördüğün ilanı da gönderebilirsin.** LinkedIn linkini `LinkedIn linki` alanına yaz; `Resmi ilan linki` alanına ise ilandaki "Başvur" butonunun açtığı şirket sayfasını yaz. LinkedIn linki tek başına resmi kaynak sayılmaz, resmi linkin yanında gösterilir.
+5. Kayıtlar silinmez, kapanınca `aktif: false` yapılır. Böylece geçmiş yılların takvimi korunur.
 
 ## Doğrudan PR (geliştiriciler için)
 ```bash

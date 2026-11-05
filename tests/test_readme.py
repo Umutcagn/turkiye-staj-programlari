@@ -96,3 +96,9 @@ def test_sablon_disi_korunur(kayit):
 def test_isaretsiz_sablon_hata(kayit):
     with pytest.raises(ValueError):
         readme_uret("işaret yok", [kayit()], BUGUN)
+
+
+def test_linkedin_linki_basvur_yaninda(kayit):
+    md = liste_markdown([kayit(linkedin="https://www.linkedin.com/jobs/view/1")], BUGUN)
+    assert "[LinkedIn](https://www.linkedin.com/jobs/view/1)" in md
+    assert "LinkedIn" not in liste_markdown([kayit()], BUGUN)

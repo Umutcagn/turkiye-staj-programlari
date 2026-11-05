@@ -57,7 +57,11 @@ body:
   - type: input
     attributes:
       label: Resmi ilan linki
-      description: https:// ile başlayan, şirketin kendi sayfası ya da resmi başvuru platformu
+      description: https:// ile başlayan, şirketin kendi sayfası ya da resmi başvuru platformu. İlanı LinkedIn'de gördüysen "Başvur" butonunun açtığı sayfayı yaz.
     validations: {required: true}
+  - type: input
+    attributes:
+      label: LinkedIn linki
+      description: "İsteğe bağlı: LinkedIn ilanı, duyuru gönderisi ya da şirket sayfası (https://www.linkedin.com/jobs/view/..., /posts/..., /company/...)"
   - type: input
     attributes: {label: Not, description: Kısa ek bilgi (en fazla 200 karakter)}

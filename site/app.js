@@ -28,6 +28,11 @@
   const tarihYaz = (d) => `${d.getDate()} ${AYLAR_UZUN[d.getMonth()]} ${d.getFullYear()}`;
   const kucult = (s) => (s || "").toLocaleLowerCase("tr");
   const guvenliUrl = (u) => (/^https:\/\//.test(u || "") ? u : null);
+  const linkedinUrl = (u) => (/^https:\/\/([a-z]{2,3}\.|www\.)?linkedin\.com\//.test(u || "") ? u : null);
+  const linkedinButon = (k) => {
+    const u = linkedinUrl(k.linkedin);
+    return u ? el("a", { class: "buton ikincil", href: u, target: "_blank", rel: "noopener noreferrer" }, "LinkedIn ↗") : null;
+  };
 
   // ---- tarih durumu ------------------------------------------------------
   // Beklenen kayıtlarda tüm tarihler (açılış, son gün, dönem) aynı yıl kadar ileri kaydırılır.
@@ -214,6 +219,7 @@
       el("div", { class: "eylem" },
         VERI.ozel && k.skor != null ? el("span", { class: "skor", title: "TOPSIS skoru" }, `skor ${k.skor.toFixed(1)}`) : null,
         url ? el("a", { class: "buton", href: url, target: "_blank", rel: "noopener noreferrer" }, "Resmi ilan ↗") : null,
+        linkedinButon(k),
         k._tarih && k._durum !== "kapandi"
           ? el("button", { class: "buton ikincil", type: "button", onclick: () => icsIndir(k),
                            title: k._durum === "yakinda" ? "Açılış ve son gün takvimine eklenir" : "Son gün takvimine eklenir" }, "Takvime ekle")
@@ -375,7 +381,8 @@
         t.tarih ? el("span", { class: "kucuk" }, `başvuru: ${t.tarih}`) : null,
         el("textarea", { rows: "2", placeholder: "Not: kime yazdım, hangi belge eksik…", "aria-label": `${k.sirket} notu`,
                          onchange: (e) => takipYaz(k.id, "not", e.target.value) }, t.not || ""),
-        url ? el("a", { class: "buton", href: url, target: "_blank", rel: "noopener noreferrer" }, "Resmi ilan ↗") : null));
+        url ? el("a", { class: "buton", href: url, target: "_blank", rel: "noopener noreferrer" }, "Resmi ilan ↗") : null,
+        linkedinButon(k)));
   }
 
   function takipCsv(liste) {

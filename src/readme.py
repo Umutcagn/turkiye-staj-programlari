@@ -106,7 +106,7 @@ def _tablo(kayitlar: list[dict]) -> str:
             _tarih_metni(k),
             _donem_metni(k),
             _sartlar(k),
-            f"[Başvur]({k['url']})",
+            f"[Başvur]({k['url']})" + (f"<br>[LinkedIn]({k['linkedin']})" if k.get("linkedin") else ""),
         ]) + " |")
     return "\n".join(satirlar)
 

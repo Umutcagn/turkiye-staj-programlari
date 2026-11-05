@@ -22,7 +22,7 @@ BASLIKLAR = {
     "Staj/program bitişi": "donem_bitis",
     "Tarih durumu": "tarih_durumu", "Başvurabilecek sınıflar": "sinif",
     "Not ortalaması eşiği": "not_esigi", "İngilizce şartı": "ingilizce",
-    "Resmi ilan linki": "url", "Not": "notlar", "Kapanan programın linki": "kapanan_url",
+    "Resmi ilan linki": "url", "LinkedIn linki": "linkedin", "Not": "notlar", "Kapanan programın linki": "kapanan_url",
 }
 _TUR_TERS = {v: k for k, v in TUR_ETIKET.items()}
 _ALAN_TERS = {v: k for k, v in ALAN_ETIKET.items()}
@@ -68,6 +68,8 @@ def kayit_olustur(form: dict[str, str], bugun: date) -> dict:
             k["not_esigi"] = float(form["not_esigi"].replace(",", "."))
         except ValueError:
             k["not_esigi"] = form["not_esigi"]  # şema hatası olarak yakalanır
+    if form.get("linkedin"):
+        k["linkedin"] = form["linkedin"]
     if form.get("notlar"):
         k["notlar"] = form["notlar"][:200]
     return k

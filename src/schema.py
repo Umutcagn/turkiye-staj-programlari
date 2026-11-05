@@ -29,9 +29,11 @@ SINIFLAR = {1, 2, 3, 4, "yeni-mezun", "yuksek-lisans"}
 
 ZORUNLU = ("id", "sirket", "program", "tur", "alan", "bolge", "tarih_durumu", "url", "aktif", "eklenme", "guncelleme")
 OPSIYONEL = ("sehir", "son_basvuru", "basvuru_acilis", "donem_baslangic", "donem_bitis",
-             "sinif", "not_esigi", "ingilizce", "notlar", "ozel")
+             "sinif", "not_esigi", "ingilizce", "notlar", "linkedin", "ozel")
 
 _TARIH = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# LinkedIn ilanı ya da şirket sayfası: resmi linkin yerine geçmez, yanında durur
+LINKEDIN = re.compile(r"^https://([a-z]{2,3}\.|www\.)?linkedin\.com/(jobs|company|posts|feed|school|showcase)/\S+$")
 
 
 def yeni_id() -> str:
@@ -76,6 +78,11 @@ def kayit_hatalari(kayit: dict) -> list[str]:
     url = kayit.get("url")
     if url and not str(url).startswith("https://"):
         hatalar.append(f"{etiket}: url resmi ilan linki olmalı (https://)")
+    elif url and LINKEDIN.match(str(url)):
+        hatalar.append(f"{etiket}: url resmi sayfa olmalı; LinkedIn linkini 'linkedin' alanına yaz")
+    li = kayit.get("linkedin")
+    if li is not None and not (isinstance(li, str) and LINKEDIN.match(li)):
+        hatalar.append(f"{etiket}: linkedin https://www.linkedin.com/jobs|company|posts/... biçiminde olmalı")
 
     for alan in ("eklenme", "guncelleme"):
         if kayit.get(alan) and not _tarih_mi(kayit[alan]):

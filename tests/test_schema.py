@@ -54,3 +54,16 @@ def test_tekrarlanan_id(kayit):
 def test_ozel_kayit_public_listede_olamaz(kayit):
     assert liste_hatalari([kayit(ozel=True)], public=True)
     assert liste_hatalari([kayit(ozel=True)], public=False) == []
+
+
+def test_linkedin_alani(kayit):
+    assert kayit_hatalari(kayit(linkedin="https://www.linkedin.com/jobs/view/1234567890")) == []
+    assert kayit_hatalari(kayit(linkedin="https://tr.linkedin.com/company/ornek")) == []
+    assert kayit_hatalari(kayit(linkedin="https://www.linkedin.com/posts/ornek_staj-activity-1"))  == []
+    assert any("linkedin" in h for h in kayit_hatalari(kayit(linkedin="https://ornek.com/staj")))
+    assert any("linkedin" in h for h in kayit_hatalari(kayit(linkedin="http://www.linkedin.com/jobs/view/1")))
+
+
+def test_linkedin_resmi_linkin_yerine_gecmez(kayit):
+    hatalar = kayit_hatalari(kayit(url="https://www.linkedin.com/jobs/view/1234567890"))
+    assert any("resmi sayfa" in h for h in hatalar)

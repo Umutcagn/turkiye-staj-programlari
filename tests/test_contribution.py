@@ -85,3 +85,15 @@ def test_kapandi_isaretlenir():
     govde = "### Kapanan programın linki\n\nhttps://ornek.com/staj\n"
     kayitlar, mesaj = isle(govde, ["approved", "kapandi"], kayitlar, BUGUN)
     assert kayitlar[0]["aktif"] is False and "Kapandı" in mesaj
+
+
+def test_linkedin_linki_kayda_gecer():
+    govde = FORM + "\n### LinkedIn linki\n\nhttps://www.linkedin.com/jobs/view/1234567890\n"
+    kayitlar, _ = isle(govde, ["approved"], [], BUGUN)
+    assert kayitlar[0]["linkedin"] == "https://www.linkedin.com/jobs/view/1234567890"
+
+
+def test_linkedin_bos_birakilabilir():
+    govde = FORM + "\n### LinkedIn linki\n\n_No response_\n"
+    kayitlar, _ = isle(govde, ["approved"], [], BUGUN)
+    assert "linkedin" not in kayitlar[0]
