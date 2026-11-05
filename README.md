@@ -14,7 +14,7 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, ge
 ---
 
 <!-- LISTE:BASLANGIC -->
-**37 program** · 11 açık · 0 yakında açılıyor · 23 beklenen · son veri güncellemesi: 2026-11-01
+**38 program** · 12 açık · 0 yakında açılıyor · 23 beklenen · son veri güncellemesi: 2026-11-05
 
 ## 🟢 Başvurusu açık
 
@@ -31,6 +31,7 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, ge
 | 🌍 **ETH Zürih** | Student Summer Research Fellowship (SSRF)<br><sub>Araştırma/Burs</sub> | Yazılım, Veri | Zürih | 1 Kasım – 16 Aralık 2026 | — | İng.: İleri | [Başvur](https://inf.ethz.ch/studies/summer-research-fellowship.html) |
 | 🌍 **OECD** | Internship Programme<br><sub>Yurt dışı</sub> | Finans-Ekonomi, Kamu-Uluslararası, Veri, Çevre-Enerji, Sosyal bilimler | Paris | Son gün: 31 Aralık 2026 | — | İng.: İleri | [Başvur](https://www.oecd.org/en/about/careers/internships.html) |
 | **Baykar** | 2027 Yaz Dönemi Staj<br><sub>Yaz stajı</sub> | Yazılım, Makine, Elektrik-Elektronik, Havacılık-Uzay | — | Son gün: 15 Ocak 2027 | — | Belirtilmemiş | [Başvur](https://kariyer.baykartech.com/tr/staj/) |
+| **Fergani Space** | 2027 Yaz Dönemi Staj<br><sub>Yaz stajı</sub> | Havacılık-Uzay, Yazılım, Makine, Elektrik-Elektronik | — | Son gün: 15 Ocak 2027 | — | Belirtilmemiş | [Başvur](https://kariyer.ferganispace.com/tr/staj/) |
 
 ## 📣 Yakında açılıyor
 

@@ -242,8 +242,8 @@
     "url": "https://kariyer.baykartech.com/tr/staj/",
     "aktif": true,
     "eklenme": "2026-10-21",
-    "guncelleme": "2026-10-21",
-    "notlar": "2027 Bahar dönemi (Şubat–Mayıs 2027) başvuruları 14 Ekim 2026'da kapandı",
+    "guncelleme": "2026-11-05",
+    "notlar": "2027 Güz dönemi henüz duyurulmadı. 2027 Bahar dönemi (Şubat–Mayıs 2027) başvuruları 14 Ekim 2026'da kapandı; 2027 Yaz stajı ayrı kayıtta",
     "donem_baslangic": "2026-10-05",
     "donem_bitis": "2027-01-15"
   },
@@ -324,10 +324,10 @@
     "url": "https://openlab.cern/cern-openlab-summer-student-programme",
     "aktif": true,
     "eklenme": "2026-10-21",
-    "guncelleme": "2026-11-01",
+    "guncelleme": "2026-11-05",
     "donem_baslangic": "2026-06-01",
     "donem_bitis": "2026-08-31",
-    "notlar": "CERN'e göre 2027 çağrısı Kasım 2026'da açılıyor; staj 21 ya da 28 Haziran 2027'de başlar, 9 hafta, ücretli. Haziran'a kadar en az 3 yıl okumuş olmak gerekir"
+    "notlar": "2027 çağrısı açıldı (Kasım 2026); son başvuru günü resmi sayfada, gösterilen tarih geçen yılın. Staj 21 ya da 28 Haziran 2027'de başlar, 9 hafta, ücretli; adaylara en geç Nisan 2027 başında dönüş yapılır. Haziran'a kadar en az 3 yıl okumuş olmak gerekir"
   },
   {
     "id": "222914f4-01bd-4e28-85f2-19a5feaa6f50",
@@ -406,6 +406,30 @@
     "notlar": "Bilgisayar Bilimleri bölümünde yaz araştırma bursu; son gün saat 13:00 (Orta Avrupa saati). ETH öğrencileri başvuramaz"
   },
   {
+    "id": "b3ca7b10-9348-4766-8892-c97fbc783cdb",
+    "sirket": "Fergani Space",
+    "program": "2027 Yaz Dönemi Staj",
+    "tur": "yaz-staji",
+    "alan": [
+      "havacilik-uzay",
+      "yazilim",
+      "makine",
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [],
+    "son_basvuru": "2027-01-15",
+    "tarih_durumu": "kesin",
+    "sinif": [],
+    "not_esigi": null,
+    "ingilizce": null,
+    "url": "https://kariyer.ferganispace.com/tr/staj/",
+    "aktif": true,
+    "eklenme": "2026-11-05",
+    "guncelleme": "2026-11-05",
+    "notlar": "Son gün resmi sayfadaki staj takviminden (15.01.2027). Bölüm ve sınıf şartları başvuru formunda"
+  },
+  {
     "id": "d56a9bc5-fe47-4904-93c1-b79f11ee9d13",
     "sirket": "Fergani Space",
     "program": "Dönemlik Staj Programı",
@@ -426,8 +450,8 @@
     "url": "https://kariyer.ferganispace.com/tr/staj/",
     "aktif": true,
     "eklenme": "2026-10-21",
-    "guncelleme": "2026-10-21",
-    "notlar": "2027 Bahar dönemi başvuruları 17 Ekim 2026'da kapandı"
+    "guncelleme": "2026-11-05",
+    "notlar": "2027 Bahar dönemi başvuruları 17 Ekim 2026'da kapandı; 2027 Yaz stajı ayrı kayıtta"
   },
   {
     "id": "67fa0cf8-2a2b-4c6d-a5c4-4be77275db74",
@@ -592,9 +616,9 @@
     "url": "https://nato.int/en/news-and-events/articles/news/2026/03/25/the-nato-internship-programme-is-now-open-for-applications-",
     "aktif": true,
     "eklenme": "2026-10-21",
-    "guncelleme": "2026-10-21",
+    "guncelleme": "2026-11-05",
     "basvuru_acilis": "2026-03-25",
-    "notlar": "6 ay, ücretli; Mart veya Eylül başlangıç. 21–30 yaş, NATO üyesi ülke vatandaşı"
+    "notlar": "6 ay, ücretli; 2026 çağrısı Mart ya da Eylül 2027 başlangıçlıydı. Sonraki çağrı genelde Mart'ta açılır. 21–30 yaş, NATO üyesi ülke vatandaşı"
   },
   {
     "id": "cce12eac-c7fc-43ef-93b4-2a56b7f1cb5c",
@@ -683,7 +707,7 @@
     "url": "https://www.turkmsic.org",
     "aktif": true,
     "eklenme": "2026-10-21",
-    "guncelleme": "2026-10-21",
+    "guncelleme": "2026-11-05",
     "notlar": "Tıp öğrencileri için 4 haftalık klinik/araştırma değişimi; başvuru fakültedeki yerel komiteden"
   },
   {
