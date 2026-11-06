@@ -31,7 +31,12 @@
   "yil_sayisi": 0
  },
  "264c12ba-5823-4710-9101-b8ba7a7a3b29": {
-  "imza": "ae7bdac2e33ef738",
+  "bulgu": {
+   "ornek": [],
+   "seviye": "zayif",
+   "tarih": "2026-11-06"
+  },
+  "imza": "3aa9c1f7ae60f090",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -120,7 +125,12 @@
   "yil_sayisi": 0
  },
  "d27b5b5a-d6f0-4d8a-aed8-c8cc017fa9a5": {
-  "imza": "47f660f8746e177a",
+  "bulgu": {
+   "ornek": [],
+   "seviye": "zayif",
+   "tarih": "2026-11-06"
+  },
+  "imza": "f0e3ee6181459ad6",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -141,7 +151,12 @@
   "yil_sayisi": 12
  },
  "e23dbab4-b64d-4f21-99f6-74e23cfec389": {
-  "imza": "33b73de5f256983b",
+  "bulgu": {
+   "ornek": [],
+   "seviye": "zayif",
+   "tarih": "2026-11-06"
+  },
+  "imza": "212ec699ecca702b",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
