@@ -34,9 +34,9 @@
   "bulgu": {
    "ornek": [],
    "seviye": "zayif",
-   "tarih": "2026-11-07"
+   "tarih": "2026-11-09"
   },
-  "imza": "a625c0afb88f8d2a",
+  "imza": "cc11fa9f3296975c",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -65,17 +65,17 @@
  "70558c81-1ee4-4c7c-941c-dd3e98e22081": {
   "bulgu": {
    "ornek": [
-    "2026-2027 EXALL Takımı Koordinatörlüğü Başvurusu",
-    "2026-2027 ITS'Dergi Editörlük Başvurusu",
-    "2026-2027 ITS'Dergi Yayın Ekibi Başvurusu"
+    "2026-2027 SCORA Dergi KÇG Koordinatörlük Başvuru Formu",
+    "2026-2027 SCORA PROJE VE SAVUNUCULUK KOORDİNATÖRLÜĞÜ BAŞVURU FORMU",
+    "2026-2027 SCORA Eğitim KÇG Koordinatörlük Başvuru Formu"
    ],
    "seviye": "guclu",
-   "tarih": "2026-11-08"
+   "tarih": "2026-11-09"
   },
-  "imza": "52167ecd5f229f9b",
+  "imza": "b4dd1c4db721aca4",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 25
+  "yil_sayisi": 19
  },
  "7a53492d-36e4-4247-8a08-7decfec1e3a3": {
   "imza": "da39a3ee5e6b4b0d",
@@ -128,9 +128,9 @@
   "bulgu": {
    "ornek": [],
    "seviye": "zayif",
-   "tarih": "2026-11-07"
+   "tarih": "2026-11-09"
   },
-  "imza": "176d695598d8b2d9",
+  "imza": "3c02b7a7c09339c9",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -154,9 +154,9 @@
   "bulgu": {
    "ornek": [],
    "seviye": "zayif",
-   "tarih": "2026-11-07"
+   "tarih": "2026-11-09"
   },
-  "imza": "01f001281aae31aa",
+  "imza": "45864a4b536676c9",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -183,9 +183,18 @@
   "yil_sayisi": 9
  },
  "f3849918-81bd-4627-b151-7bbd3eedddab": {
-  "imza": "500c0350c0fe7e38",
+  "bulgu": {
+   "ornek": [
+    "CERN OPENLAB Summer Student Programme 2027",
+    "SUM-OPENLAB-2027",
+    "CERN Summer Student Programme 2027 (Member and Non-Member State)"
+   ],
+   "seviye": "guclu",
+   "tarih": "2026-11-09"
+  },
+  "imza": "386006553d32ec3a",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 0
+  "yil_sayisi": 4
  }
 }
