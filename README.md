@@ -14,7 +14,7 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, ge
 ---
 
 <!-- LISTE:BASLANGIC -->
-**38 program** · 12 açık · 0 yakında açılıyor · 23 beklenen · son veri güncellemesi: 2026-11-05
+**39 program** · 11 açık · 0 yakında açılıyor · 23 beklenen · son veri güncellemesi: 2026-11-12
 
 ## 🟢 Başvurusu açık
 
@@ -22,10 +22,9 @@ Türkiye'deki öğrenciler ve yeni mezunlar için staj, yarışma, hackathon, ge
 
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
-| **Türk Eğitim Vakfı** | Üstün Başarı Sanat Bursu<br><sub>Araştırma/Burs</sub> | Sanat-Kültür | — | 19 Ekim – 5 Kasım 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 3.00 | [Başvur](https://www.tev.org.tr/tr/burslar) |
-| **TÜBİTAK** | 2209-A Üniversite Öğrencileri Araştırma Projeleri<br><sub>Araştırma/Burs</sub> | Tüm bölümler | — | 7 Ekim – 11 Kasım 2026 | — | Belirtilmemiş | [Başvur](https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri) |
 | **NASA** | Space Apps Challenge 2026<br><sub>Hackathon</sub> | Tüm bölümler | — | Son gün: 14 Kasım 2026 | 14 Kasım – 15 Kasım 2026 | Belirtilmemiş | [Başvur](https://www.spaceappschallenge.org/) |
 | 🌍 **EPFL** | Life Sciences Summer Research Program<br><sub>Araştırma/Burs</sub> | Sağlık, Fen bilimleri | Lozan | Son gün: 15 Kasım 2026 | 5 Temmuz – 27 Ağustos 2027 | İng.: İleri | [Başvur](https://www.epfl.ch/schools/sv/education/summer-research-program/) |
+| **Vodafone Türkiye** | Şebeke Operasyonları Bootcamp (Techcareer.net)<br><sub>Akademi/Kamp</sub> | Elektrik-Elektronik | İstanbul, Ankara | Son gün: 25 Kasım 2026 | 7 Aralık – 27 Aralık 2026 | Sınıf: 3, 4, Yeni mezun | [Başvur](https://www.techcareer.net/bootcamp/vodafone-sebeke-operasyonlari-bootcamp) |
 | 🌍 **EPFL** | Summer@EPFL Araştırma Bursu<br><sub>Araştırma/Burs</sub> | Yazılım, Elektrik-Elektronik, Veri | Lozan | Son gün: 29 Kasım 2026 | — | İng.: İleri | [Başvur](https://summer.epfl.ch/) |
 | **İŞKUR** | Ulusal Staj Programı<br><sub>Yaz stajı</sub> | Tüm bölümler | — | 26 Ekim – 14 Aralık 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 2.00 | [Başvur](https://ulusalstajprogrami.iskur.gov.tr) |
 | 🌍 **ETH Zürih** | Student Summer Research Fellowship (SSRF)<br><sub>Araştırma/Burs</sub> | Yazılım, Veri | Zürih | 1 Kasım – 16 Aralık 2026 | — | İng.: İleri | [Başvur](https://inf.ethz.ch/studies/summer-research-fellowship.html) |
@@ -79,11 +78,13 @@ Belirli bir son tarihi olmayan, yıl boyu başvuru alan programlar.
 | 🌍 **Birleşmiş Milletler** | UN Internship Programme<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, Sosyal bilimler, İletişim-Medya, Tüm bölümler | — | Sürekli açık | — | Sınıf: 4, Yeni mezun, YL<br>İng.: İleri | [Başvur](https://careers.un.org/home?language=en) |
 
 <details>
-<summary>🔒 Kapanmış (3)</summary>
+<summary>🔒 Kapanmış (5)</summary>
 
 | Kurum | Program | Alan | Şehir | Başvuru | Staj/program dönemi | Şartlar | |
 |---|---|---|---|---|---|---|---|
 | **TSKB** | Uzun Dönem Staj Programı<br><sub>Uzun dönem staj</sub> | Finans-Ekonomi | — | Sürekli açık | — | Belirtilmemiş | [Başvur](https://www.tskb.com.tr/tr/insan-kaynaklari) |
+| **TÜBİTAK** | 2209-A Üniversite Öğrencileri Araştırma Projeleri<br><sub>Araştırma/Burs</sub> | Tüm bölümler | — | 7 Ekim – 11 Kasım 2026 | — | Belirtilmemiş | [Başvur](https://www.tubitak.gov.tr/tr/burslar/lisans/burs-programlari/2209-a/icerik-basvuru-tarihleri) |
+| **Türk Eğitim Vakfı** | Üstün Başarı Sanat Bursu<br><sub>Araştırma/Burs</sub> | Sanat-Kültür | — | 19 Ekim – 5 Kasım 2026 | — | Sınıf: 2, 3, 4<br>Ort. ≥ 3.00 | [Başvur](https://www.tev.org.tr/tr/burslar) |
 | 🌍 **Avrupa Parlamentosu** | Robert Schuman Stajı (Mart–Temmuz 2027)<br><sub>Yurt dışı</sub> | Kamu-Uluslararası, Hukuk, İletişim-Medya, Sosyal bilimler, Tüm bölümler | Brüksel, Lüksemburg, Strazburg | 1 Ekim – 31 Ekim 2026 | 1 Mart – 31 Temmuz 2027 | Sınıf: Yeni mezun<br>İng.: İleri | [Başvur](https://www.europarl.europa.eu/at-your-service/en/work-with-us/traineeships) |
 | **Ziraat Bankası** | Staj Programı (Kariyer Kapısı)<br><sub>Yaz stajı</sub> | Finans-Ekonomi | — | _Geçen yıl: 2 Ocak – 31 Mart 2026_ | — | Belirtilmemiş | [Başvur](https://www.ziraatbank.com.tr/tr/bankamiz/insan-kaynaklari/duyurular) |
 

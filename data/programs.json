@@ -912,5 +912,33 @@
     "guncelleme": "2026-11-01",
     "basvuru_acilis": "2026-01-02",
     "notlar": "Ayrı başvuru yok: Ziraat stajları Ulusal Staj Programı (İŞKUR) üzerinden veriliyor, o kayda bak"
+  },
+  {
+    "id": "5cb14fe2-5c1d-46bf-ae31-7a382ea320ba",
+    "sirket": "Vodafone Türkiye",
+    "program": "Şebeke Operasyonları Bootcamp (Techcareer.net)",
+    "tur": "akademi",
+    "alan": [
+      "elektrik-elektronik"
+    ],
+    "bolge": "TR",
+    "sehir": [
+      "İstanbul",
+      "Ankara"
+    ],
+    "son_basvuru": "2026-11-25",
+    "tarih_durumu": "kesin",
+    "donem_baslangic": "2026-12-07",
+    "donem_bitis": "2026-12-27",
+    "sinif": [
+      3,
+      4,
+      "yeni-mezun"
+    ],
+    "url": "https://www.techcareer.net/bootcamp/vodafone-sebeke-operasyonlari-bootcamp",
+    "aktif": true,
+    "eklenme": "2026-11-12",
+    "guncelleme": "2026-11-12",
+    "notlar": "Ücretsiz, online, yaklaşık 40 saat; başarılı olanlar teknik mülakatla Vodafone Türkiye Şebeke Operasyonları ekibinde staj için değerlendirilir (işe alım garantisi yok). İstanbul veya Ankara'da ikamet şartı."
   }
 ]
