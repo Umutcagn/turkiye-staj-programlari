@@ -19,7 +19,12 @@
   "yil_sayisi": 0
  },
  "212798d3-1c20-4fe6-98c0-1df2d723bc86": {
-  "imza": "403216740e08f37b",
+  "bulgu": {
+   "ornek": [],
+   "seviye": "zayif",
+   "tarih": "2026-11-13"
+  },
+  "imza": "a909fc025e0c9e3f",
   "kisa": false,
   "yil": 2027,
   "yil_sayisi": 0
@@ -56,6 +61,21 @@
   "yil": 2027,
   "yil_sayisi": 3
  },
+ "53e926b6-3af5-4981-9cbe-7addc262d654": {
+  "bulgu": {
+   "ornek": [
+    "Başvuru Dönemi: Mart 2027",
+    "Başvuru Dönemi: Eylül 2027",
+    "Başvuru Dönemi: Mayıs 2027"
+   ],
+   "seviye": "guclu",
+   "tarih": "2026-11-13"
+  },
+  "imza": "cdabb71dda96d180",
+  "kisa": false,
+  "yil": 2027,
+  "yil_sayisi": 3
+ },
  "67fa0cf8-2a2b-4c6d-a5c4-4be77275db74": {
   "imza": "209f7d8cbbbc7cc9",
   "kisa": false,
@@ -82,6 +102,21 @@
   "kisa": true,
   "yil": 2027,
   "yil_sayisi": 0
+ },
+ "86ff0c4c-3bb1-47c2-b7e8-9f29127936ba": {
+  "bulgu": {
+   "ornek": [
+    "Başvuru Dönemi: Mart 2027",
+    "Başvuru Dönemi: Eylül 2027",
+    "Başvuru Dönemi: Mayıs 2027"
+   ],
+   "seviye": "guclu",
+   "tarih": "2026-11-13"
+  },
+  "imza": "cdabb71dda96d180",
+  "kisa": false,
+  "yil": 2027,
+  "yil_sayisi": 3
  },
  "8816e67c-b93a-479f-babc-5a2477b7b161": {
   "imza": "66a45fad2e7e2092",
