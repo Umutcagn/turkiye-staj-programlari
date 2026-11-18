@@ -20,14 +20,16 @@
  },
  "212798d3-1c20-4fe6-98c0-1df2d723bc86": {
   "bulgu": {
-   "ornek": [],
-   "seviye": "zayif",
-   "tarih": "2026-11-13"
+   "ornek": [
+    "2027 Yılı Erasmus+ Teklif Çağrısı ve Program Rehberi Yayımlandı"
+   ],
+   "seviye": "guclu",
+   "tarih": "2026-11-18"
   },
-  "imza": "a909fc025e0c9e3f",
+  "imza": "d9c3eb9b42204a52",
   "kisa": false,
   "yil": 2027,
-  "yil_sayisi": 0
+  "yil_sayisi": 1
  },
  "22e88f4c-1df2-4f1f-a530-a572f20d99bf": {
   "imza": "66a45fad2e7e2092",
